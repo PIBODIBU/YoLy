@@ -110,4 +110,5 @@ dependencies {
 
     // Other Material Design libraries
     compile 'me.zhanghai.android.materialprogressbar:library:1.1.7'
+    compile 'com.wdullaer:materialdatetimepicker:2.5.0'
 }

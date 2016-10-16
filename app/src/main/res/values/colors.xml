@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#3e4d68</color>
+    <color name="colorPrimaryDark">#37474f</color>
+    <color name="colorPrimaryLight">#546e7a</color>
+    <color name="colorPrimaryLightFull">#F5F5F5</color>
+    <color name="colorAccent">#3e4d68</color>
+    <color name="colorAccentLight">#607d8b</color>
+
+    <color name="colorTextPrimary">#3e4d68</color>
+    <color name="colorTextAccent">#365fb6</color>
+    <color name="colorTextInput">#313131</color>
+    <color name="colorTextPrimaryDark">#37474f</color>
+    <color name="colorTextSecondary">#9e9e9e</color>
+    <color name="colorTextHint">#62000000</color>
+    <color name="colorDivider">#62000000</color>
+    <color name="colorDividerLight">#30000000</color>
+    <color name="colorBackground">#EEEEEE</color>
+
+    <color name="btn_gradient_start">#313d52</color>
+    <color name="btn_gradient_end">#4c5e7f</color>
+
+    <color name="mdtp_accent_color">@color/colorPrimary</color>
+    <color name="mdtp_accent_color_dark">@color/colorPrimaryDark</color>
+
+    <color name="white">#ffffff</color>
 </resources>
