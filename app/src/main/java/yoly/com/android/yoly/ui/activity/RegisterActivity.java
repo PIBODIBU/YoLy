@@ -12,8 +12,13 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import yoly.com.android.yoly.R;
+import yoly.com.android.yoly.ui.presenter.RegisterPresenter;
+import yoly.com.android.yoly.ui.presenter.implementation.RegisterPresenterImpl;
+import yoly.com.android.yoly.ui.view.RegisterView;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity implements RegisterView {
+
+    private RegisterPresenter presenter;
 
     @BindView(R.id.tv_birth_date)
     public TextView TVBirthDate;
@@ -22,24 +27,26 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
         ButterKnife.bind(this);
+        presenter = new RegisterPresenterImpl(this);
     }
 
+    @Override
     @OnClick(R.id.ll_birth_date)
     public void showDatePicker() {
         Calendar now = Calendar.getInstance();
         DatePickerDialog dpd = DatePickerDialog.newInstance(
-                new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-                        String date = String.valueOf(dayOfMonth) + "/" + String.valueOf((monthOfYear + 1)) + "/" + String.valueOf(year);
-                        TVBirthDate.setText(date);
-                    }
-                },
+                presenter.getOnDateSetListener(),
                 now.get(Calendar.YEAR),
                 now.get(Calendar.MONTH),
                 now.get(Calendar.DAY_OF_MONTH));
 
-        dpd.show(getFragmentManager(), "Datepickerdialog");
+        dpd.show(getFragmentManager(), "DatePickerDialog");
+    }
+
+    @Override
+    public void setDate(String date) {
+        TVBirthDate.setText(date);
     }
 }

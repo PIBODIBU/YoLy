@@ -85,6 +85,8 @@
             <android.support.v7.widget.AppCompatEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="phone"
+                android:maxLines="1"
                 android:text="+7"
                 android:textAlignment="center"
                 app:theme="@style/AppTheme.EditTextStyle" />
@@ -102,6 +104,8 @@
             <android.support.v7.widget.AppCompatEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="text"
+                android:maxLines="1"
                 android:textAlignment="center"
                 app:theme="@style/AppTheme.EditTextStyle" />
 
