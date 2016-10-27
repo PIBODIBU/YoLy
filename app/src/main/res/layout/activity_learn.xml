@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_learn"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="yoly.com.android.yoly.ui.activity.LearnActivity">
+
+    <com.daimajia.slider.library.SliderLayout
+        android:id="@+id/slider_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/shadow" />
+
+    <View
+        android:id="@+id/shadow"
+        android:layout_width="match_parent"
+        android:layout_height="16dp"
+        android:layout_above="@+id/ll_controls"
+        android:background="@drawable/shadow_to_top" />
+
+    <LinearLayout
+        android:id="@+id/ll_controls"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:id="@+id/slide_description"
+            style="@style/AppTheme.TextView.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Сделайте и загрузите фотографию хорошего качества"
+            android:textSize="16sp" />
+
+        <com.daimajia.slider.library.Indicators.PagerIndicator
+            android:id="@+id/page_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            app:selected_color="@color/pager_indicator_selected"
+            app:selected_height="16dp"
+            app:selected_width="16dp"
+            app:shape="oval"
+            app:unselected_color="@color/pager_indicator_unselected"
+            app:unselected_height="8dp"
+            app:unselected_width="8dp" />
+    </LinearLayout>
+</RelativeLayout>

@@ -8,8 +8,6 @@ import yoly.com.android.yoly.ui.view.RegisterView;
 public class RegisterPresenterImpl implements RegisterPresenter, DatePickerDialog.OnDateSetListener {
     private RegisterView view;
 
-    private DatePickerDialog.OnDateSetListener onDateSetListener = this;
-
     public RegisterPresenterImpl(RegisterView view) {
         this.view = view;
     }
@@ -22,6 +20,11 @@ public class RegisterPresenterImpl implements RegisterPresenter, DatePickerDialo
 
     @Override
     public DatePickerDialog.OnDateSetListener getOnDateSetListener() {
-        return onDateSetListener;
+        return this;
+    }
+
+    @Override
+    public void onDestroy() {
+
     }
 }

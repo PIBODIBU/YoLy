@@ -33,6 +33,12 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
     }
 
     @Override
+    protected void onDestroy() {
+        presenter.onDestroy();
+        super.onDestroy();
+    }
+
+    @Override
     @OnClick(R.id.ll_birth_date)
     public void showDatePicker() {
         Calendar now = Calendar.getInstance();

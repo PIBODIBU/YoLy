@@ -23,5 +23,8 @@
     <color name="mdtp_accent_color">@color/colorPrimary</color>
     <color name="mdtp_accent_color_dark">@color/colorPrimaryDark</color>
 
+    <color name="pager_indicator_selected">@color/colorPrimary</color>
+    <color name="pager_indicator_unselected">#78909c</color>
+
     <color name="white">#ffffff</color>
 </resources>
