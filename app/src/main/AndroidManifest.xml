@@ -23,7 +23,10 @@
         <activity android:name=".ui.activity.RegisterActivity" />
         <activity
             android:name=".ui.activity.LearnActivity"
-            android:exported="true" /> <!--TODO DEBUG-->
+            android:exported="true" /> <!-- TODO DEBUG -->
+        <activity
+            android:name=".ui.activity.CountryChooseActivity"
+            android:exported="true" /> <!-- TODO DEBUG -->
     </application>
 
 </manifest>

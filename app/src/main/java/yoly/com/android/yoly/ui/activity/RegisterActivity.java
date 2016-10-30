@@ -1,5 +1,6 @@
 package yoly.com.android.yoly.ui.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -54,5 +55,10 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
     @Override
     public void setDate(String date) {
         TVBirthDate.setText(date);
+    }
+
+    @OnClick(R.id.btn_register)
+    public void register() {
+        startActivity(new Intent(RegisterActivity.this, CountryChooseActivity.class));
     }
 }

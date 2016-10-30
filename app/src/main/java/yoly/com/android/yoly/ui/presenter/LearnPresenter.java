@@ -18,4 +18,6 @@ public interface LearnPresenter {
     void stopSliderAutoCycle();
 
     boolean validateText(String text);
+
+    void unsetFirstLaunchKey();
 }

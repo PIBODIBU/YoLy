@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">YoLy</string>
+    <string name="tv_country_list_title">Страны</string>
+    <string name="country_choose_hint">Выберите страну</string>
+    <string name="tv_title_repeat_password">Повторите пароль</string>
+    <string name="tv_title_type_password">Придумайте пароль</string>
+    <string name="tv_title_type_login">Придумайте логин</string>
+    <string name="et_default_phone">+7</string>
+    <string name="tv_default_date">00/00/0000</string>
+    <string name="tv_title_registration">Регистрация</string>
+    <string name="tv_title_birthday">Дата рождения</string>
+    <string name="tv_title_phone">Телефон</string>
+    <string name="btn_register">Зарегистрироваться</string>
+    <string name="tv_title_share">Рассказать друзьям о приложении</string>
+    <string name="btn_next">Далее</string>
+    <string name="slide_title_1">Сделайте и загрузите фотографию хорошего качества</string>
+    <string name="slide_title_2">Сделайте и загрузите фотографию хорошего качества</string>
+    <string name="slide_title_3">Сделайте и загрузите фотографию хорошего качества</string>
+    <string name="slide_title_4">Сделайте и загрузите фотографию хорошего качества</string>
 </resources>

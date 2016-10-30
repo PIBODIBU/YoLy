@@ -3,7 +3,6 @@ package yoly.com.android.yoly.ui.presenter.implementation;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.daimajia.slider.library.Indicators.PagerIndicator;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.DefaultSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
@@ -12,6 +11,7 @@ import java.util.LinkedList;
 
 import yoly.com.android.yoly.R;
 import yoly.com.android.yoly.data.model.LearnSlide;
+import yoly.com.android.yoly.helper.SharedPrefHelper;
 import yoly.com.android.yoly.ui.presenter.LearnPresenter;
 import yoly.com.android.yoly.ui.view.LearnView;
 
@@ -20,6 +20,7 @@ public class LearnPresenterImpl implements LearnPresenter, ViewPagerEx.OnPageCha
 
     private LinkedList<LearnSlide> slides;
     private LearnView view;
+    private SharedPrefHelper sharedPrefHelper;
 
     public LearnPresenterImpl(LearnView view) {
         this.view = view;
@@ -27,10 +28,13 @@ public class LearnPresenterImpl implements LearnPresenter, ViewPagerEx.OnPageCha
 
     @Override
     public void onStart() {
+        slides = new LinkedList<>();
+        sharedPrefHelper = new SharedPrefHelper(view.getContext());
+
         view.getSlider().addOnPageChangeListener(this);
         view.getSlider().setCustomIndicator(view.getIndicator());
 
-        slides = new LinkedList<>();
+        unsetFirstLaunchKey();
     }
 
     @Override
@@ -52,23 +56,23 @@ public class LearnPresenterImpl implements LearnPresenter, ViewPagerEx.OnPageCha
     public void fillSlider() {
         slides.add(new LearnSlide<>(
                 new DefaultSliderView(view.getContext()),
-                R.drawable.splash_clothes,
-                "Slide 1"
+                R.drawable.slide_learn_3,
+                view.getContext().getResources().getString(R.string.slide_title_1)
         ));
         slides.add(new LearnSlide<>(
                 new DefaultSliderView(view.getContext()),
-                R.drawable.splash_clothes,
-                "Slide 2"
+                R.drawable.app_splash,
+                view.getContext().getResources().getString(R.string.slide_title_2)
         ));
         slides.add(new LearnSlide<>(
                 new DefaultSliderView(view.getContext()),
-                R.drawable.splash_clothes,
-                "Slide 3"
+                R.drawable.slide_learn_3,
+                view.getContext().getResources().getString(R.string.slide_title_3)
         ));
         slides.add(new LearnSlide<>(
                 new DefaultSliderView(view.getContext()),
-                R.drawable.splash_clothes,
-                "Slide 4"
+                R.drawable.app_splash,
+                view.getContext().getResources().getString(R.string.slide_title_3)
         ));
 
         for (LearnSlide slide : slides) {
@@ -95,6 +99,11 @@ public class LearnPresenterImpl implements LearnPresenter, ViewPagerEx.OnPageCha
         }
 
         return true;
+    }
+
+    @Override
+    public void unsetFirstLaunchKey() {
+        sharedPrefHelper.setFirstLaunch(false);
     }
 
     @Override

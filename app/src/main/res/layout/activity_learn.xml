@@ -16,7 +16,7 @@
     <View
         android:id="@+id/shadow"
         android:layout_width="match_parent"
-        android:layout_height="16dp"
+        android:layout_height="0dp"
         android:layout_above="@+id/ll_controls"
         android:background="@drawable/shadow_to_top" />
 
@@ -35,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Сделайте и загрузите фотографию хорошего качества"
+            android:text="@string/slide_title_3"
             android:textSize="16sp" />
 
         <com.daimajia.slider.library.Indicators.PagerIndicator
@@ -44,12 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:gravity="center"
-            app:selected_color="@color/pager_indicator_selected"
-            app:selected_height="16dp"
-            app:selected_width="16dp"
-            app:shape="oval"
-            app:unselected_color="@color/pager_indicator_unselected"
-            app:unselected_height="8dp"
-            app:unselected_width="8dp" />
+            app:selected_drawable="@drawable/ic_circle_primary_24dp"
+            app:unselected_drawable="@drawable/ic_radio_button_unchecked_primary_24dp" />
     </LinearLayout>
 </RelativeLayout>

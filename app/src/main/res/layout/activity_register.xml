@@ -38,7 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Регистрация"
+                android:text="@string/tv_title_registration"
                 android:textSize="30sp" />
 
             <TextView
@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="36dp"
                 android:gravity="center"
-                android:text="Дата рождения"
+                android:text="@string/tv_title_birthday"
                 android:textSize="16sp" />
 
             <LinearLayout
@@ -62,7 +62,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:gravity="center"
-                    android:text="00/00/0000"
+                    android:text="@string/tv_default_date"
                     android:textColor="@color/colorTextInput"
                     android:textSize="18sp" />
 
@@ -79,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:gravity="center"
-                android:text="Телефон"
+                android:text="@string/tv_title_phone"
                 android:textSize="16sp" />
 
             <android.support.v7.widget.AppCompatEditText
@@ -87,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="phone"
                 android:maxLines="1"
-                android:text="+7"
+                android:text="@string/et_default_phone"
                 android:textAlignment="center"
                 app:theme="@style/AppTheme.EditTextStyle" />
 
@@ -97,8 +97,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:gravity="center"
-                android:inputType="text"
-                android:text="Придумайте логин"
+                android:text="@string/tv_title_type_login"
                 android:textSize="16sp" />
 
             <android.support.v7.widget.AppCompatEditText
@@ -115,7 +114,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:gravity="center"
-                android:text="Придумайте пароль"
+                android:text="@string/tv_title_type_password"
                 android:textSize="16sp" />
 
             <android.support.v7.widget.AppCompatEditText
@@ -131,7 +130,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:gravity="center"
-                android:text="Повторите пароль"
+                android:text="@string/tv_title_repeat_password"
                 android:textSize="16sp" />
 
             <android.support.v7.widget.AppCompatEditText
@@ -143,14 +142,12 @@
 
             <Button
                 android:id="@+id/btn_register"
-                style="@style/Widget.AppCompat.Button.Borderless"
+                style="@style/AppTheme.Button"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="24dp"
-                android:background="@drawable/btn_primary"
-                android:text="Зарегистрироваться"
-                android:textColor="@color/white" />
+                android:text="@string/btn_register"/>
 
             <TextView
                 style="@style/AppTheme.TextView.Secondary"
@@ -158,7 +155,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:gravity="center"
-                android:text="Рассказать друзьям о приложении"
+                android:text="@string/tv_title_share"
                 android:textSize="16sp" />
 
             <LinearLayout
@@ -171,19 +168,19 @@
                     android:layout_width="36dp"
                     android:layout_height="36dp"
                     android:layout_margin="8dp"
-                    app:srcCompat="@drawable/vk" />
+                    app:srcCompat="@drawable/ic_social_vk" />
 
                 <ImageView
                     android:layout_width="36dp"
                     android:layout_height="36dp"
                     android:layout_margin="8dp"
-                    app:srcCompat="@drawable/fb" />
+                    app:srcCompat="@drawable/ic_social_facebook" />
 
                 <ImageView
                     android:layout_width="36dp"
                     android:layout_height="36dp"
                     android:layout_margin="8dp"
-                    app:srcCompat="@drawable/tw" />
+                    app:srcCompat="@drawable/ic_social_twitter" />
             </LinearLayout>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

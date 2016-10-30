@@ -82,19 +82,19 @@
                     android:layout_width="36dp"
                     android:layout_height="36dp"
                     android:layout_margin="8dp"
-                    app:srcCompat="@drawable/vk" />
+                    app:srcCompat="@drawable/ic_social_vk" />
 
                 <ImageView
                     android:layout_width="36dp"
                     android:layout_height="36dp"
                     android:layout_margin="8dp"
-                    app:srcCompat="@drawable/fb" />
+                    app:srcCompat="@drawable/ic_social_facebook" />
 
                 <ImageView
                     android:layout_width="36dp"
                     android:layout_height="36dp"
                     android:layout_margin="8dp"
-                    app:srcCompat="@drawable/tw" />
+                    app:srcCompat="@drawable/ic_social_twitter" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
