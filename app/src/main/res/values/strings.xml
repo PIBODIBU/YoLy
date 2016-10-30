@@ -17,4 +17,7 @@
     <string name="slide_title_2">Сделайте и загрузите фотографию хорошего качества</string>
     <string name="slide_title_3">Сделайте и загрузите фотографию хорошего качества</string>
     <string name="slide_title_4">Сделайте и загрузите фотографию хорошего качества</string>
+    <string name="tv_after_registration_title">Ваш аккаунт</string>
+    <string name="tv_successfully_registered">Аккаунт ИМЯ успешно зарегистрирован</string>
+    <string name="btn_start_using">Начать использование</string>
 </resources>

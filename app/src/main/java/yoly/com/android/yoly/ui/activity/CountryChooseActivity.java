@@ -1,5 +1,6 @@
 package yoly.com.android.yoly.ui.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,6 +12,7 @@ import java.util.LinkedList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import yoly.com.android.yoly.R;
 import yoly.com.android.yoly.data.model.Country;
 import yoly.com.android.yoly.ui.adapter.CountryListAdapter;
@@ -87,5 +89,10 @@ public class CountryChooseActivity extends AppCompatActivity implements CountryC
     @Override
     public LinkedList<Country> getDataSet() {
         return dataSet;
+    }
+
+    @OnClick(R.id.btn_next)
+    public void next() {
+        startActivity(new Intent(CountryChooseActivity.this, RegisterActivity.class));
     }
 }

@@ -1,5 +1,7 @@
 package yoly.com.android.yoly.ui.view;
 
+import android.support.annotation.Nullable;
+
 import java.util.LinkedList;
 
 import yoly.com.android.yoly.data.model.Country;
@@ -14,6 +16,7 @@ public interface CountryChooseView {
 
     LinkedList<Country> getDataSet();
 
+    @Nullable
     Country getChosenCountry();
 
     CountryListAdapter getAdapter();

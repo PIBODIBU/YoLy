@@ -54,12 +54,18 @@ public class CountryChoosePresenterImpl implements CountryChoosePresenter, Count
 
     @Override
     public void onClick(TextView textView, int position) {
-        view.getDataSet().get(position).setSelected(true);
+        deselectPreviousPosition();
+
+        Country country = view.getDataSet().get(position);
+        country.setSelected(true);
+
+        view.setChosenCountry(country);
         view.getAdapter().notifyDataSetChanged();
     }
 
     @Override
     public void deselectPreviousPosition() {
-        view.getChosenCountry().setSelected(false);
+        if (view.getChosenCountry() != null)
+            view.getChosenCountry().setSelected(false);
     }
 }

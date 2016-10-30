@@ -35,7 +35,7 @@ public class BeforeLoginActivity extends AppCompatActivity implements BeforeLogi
     @Override
     @OnClick(R.id.btn_register)
     public void showRegisterActivity() {
-        startActivity(new Intent(BeforeLoginActivity.this, RegisterActivity.class));
+        startActivity(new Intent(BeforeLoginActivity.this, CountryChooseActivity.class));
         finish();
     }
 
