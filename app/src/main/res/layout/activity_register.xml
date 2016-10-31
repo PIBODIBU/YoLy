@@ -10,68 +10,22 @@
     android:padding="24dp"
     tools:context="yoly.com.android.yoly.ui.activity.RegisterActivity">
 
-    <!--<android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupMenu"
-            app:theme="@style/AppTheme.ToolBarStyle" />
-    </android.support.design.widget.AppBarLayout>-->
-
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                style="@style/AppTheme.TextView.Primary"
+            <android.support.v7.widget.AppCompatTextView
+                style="@style/AppTheme.TextView.Primary.Title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/tv_title_registration"
-                android:textSize="30sp" />
-
-            <TextView
-                style="@style/AppTheme.TextView.Secondary"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="36dp"
-                android:gravity="center"
-                android:text="@string/tv_title_birthday"
-                android:textSize="16sp" />
-
-            <LinearLayout
-                android:id="@+id/ll_birth_date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tv_birth_date"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center"
-                    android:text="@string/tv_default_date"
-                    android:textColor="@color/colorTextInput"
-                    android:textSize="18sp" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2px"
-                    android:layout_marginTop="8dp"
-                    android:background="@color/colorPrimaryLight" />
-            </LinearLayout>
+                app:textAllCaps="true" />
 
             <TextView
                 style="@style/AppTheme.TextView.Secondary"
@@ -144,44 +98,52 @@
             <Button
                 android:id="@+id/btn_register"
                 style="@style/AppTheme.Button"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="24dp"
                 android:text="@string/btn_register" />
 
-            <TextView
-                style="@style/AppTheme.TextView.Secondary"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:gravity="center"
-                android:text="@string/tv_title_share"
-                android:textSize="16sp" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal">
+                android:layout_gravity="bottom"
+                android:gravity="bottom"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:layout_margin="8dp"
-                    app:srcCompat="@drawable/ic_social_vk" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingTop="16dp"
+                    android:text="@string/tv_before_login_social"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="16sp" />
 
-                <ImageView
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:layout_margin="8dp"
-                    app:srcCompat="@drawable/ic_social_facebook" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:layout_margin="8dp"
-                    app:srcCompat="@drawable/ic_social_twitter" />
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_margin="8dp"
+                        app:srcCompat="@drawable/ic_social_vk" />
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_margin="8dp"
+                        app:srcCompat="@drawable/ic_social_facebook" />
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_margin="8dp"
+                        app:srcCompat="@drawable/ic_social_twitter" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

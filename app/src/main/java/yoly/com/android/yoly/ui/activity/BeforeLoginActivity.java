@@ -43,6 +43,5 @@ public class BeforeLoginActivity extends AppCompatActivity implements BeforeLogi
     @OnClick(R.id.btn_login)
     public void showLoginActivity() {
         startActivity(new Intent(BeforeLoginActivity.this, LoginActivity.class));
-        finish();
     }
 }

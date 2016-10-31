@@ -15,7 +15,6 @@ public class RegisterPresenterImpl implements RegisterPresenter, DatePickerDialo
     @Override
     public void onDateSet(DatePickerDialog datePickerDialog, int year, int monthOfYear, int dayOfMonth) {
         String date = String.valueOf(dayOfMonth) + "/" + String.valueOf((monthOfYear + 1)) + "/" + String.valueOf(year);
-        view.setDate(date);
     }
 
     @Override

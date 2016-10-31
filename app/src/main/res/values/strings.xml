@@ -20,4 +20,13 @@
     <string name="tv_after_registration_title">Ваш аккаунт</string>
     <string name="tv_successfully_registered">Аккаунт ИМЯ успешно зарегистрирован</string>
     <string name="btn_start_using">Начать использование</string>
+    <string name="tv_before_login_greets">Приложение позволит Вам ходить по магазинам и примерять свежие коллекции не вставая с дивана, что предотвратит ожидания в очередях, душную обстановку в тц и самое главное будет значительно экономить Ваше драгоценное время</string>
+    <string name="yourlook">YourLook</string>
+    <string name="btn_before_login_login">Войти в приложение</string>
+    <string name="btn_before_login_register">Зарегистрироваться</string>
+    <string name="tv_before_login_social">Войти с помощью социальных сетей</string>
+    <string name="tv_login_title">Вход</string>
+    <string name="tv_login_hint">Ваш логин</string>
+    <string name="tv_password_hint">Пароль</string>
+    <string name="btn_login">Войти в приложение</string>
 </resources>

@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
             android:gravity="center"
-            android:text="YourLook"
+            android:text="@string/yourlook"
             android:textColor="@color/colorTextPrimary"
             android:textSize="36sp" />
 
@@ -30,29 +30,29 @@
             android:gravity="center"
             android:paddingLeft="36dp"
             android:paddingRight="36dp"
-            android:text="Приложение позволит Вам ходить по магазинам и примерять свежие коллекции не вставая с дивана, что предотвратит ожидания в очередях, душную обстановку в тц и самое главное будет значительно экономить  Ваше драгоценное время"
+            android:text="@string/tv_before_login_greets"
             android:textColor="@color/colorTextPrimary" />
 
         <Button
             android:id="@+id/btn_register"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
+            style="@style/AppTheme.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="48dp"
             android:background="@drawable/btn_primary"
-            android:text="Зарегистрироваться"
+            android:text="@string/btn_before_login_register"
             android:textColor="@color/white" />
 
         <Button
             android:id="@+id/btn_login"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
+            style="@style/AppTheme.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
             android:background="@drawable/btn_primary_outline"
-            android:text="Войти в приложение"
+            android:text="@string/btn_before_login_login"
             android:textColor="@color/colorTextPrimaryDark" />
 
         <LinearLayout
@@ -68,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:paddingTop="16dp"
-                android:text="Войти с помощью социальных сетей"
+                android:text="@string/tv_before_login_social"
                 android:textColor="@color/colorTextPrimary"
                 android:textSize="16sp" />
 

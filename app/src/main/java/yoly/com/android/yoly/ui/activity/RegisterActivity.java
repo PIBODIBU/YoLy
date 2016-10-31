@@ -23,9 +23,6 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
 
     private RegisterPresenter presenter;
 
-    @BindView(R.id.tv_birth_date)
-    public TextView TVBirthDate;
-
     @BindView(R.id.et_username)
     public AppCompatEditText ETUsername;
 
@@ -42,24 +39,6 @@ public class RegisterActivity extends AppCompatActivity implements RegisterView 
     protected void onDestroy() {
         presenter.onDestroy();
         super.onDestroy();
-    }
-
-    @Override
-    @OnClick(R.id.ll_birth_date)
-    public void showDatePicker() {
-        Calendar now = Calendar.getInstance();
-        DatePickerDialog dpd = DatePickerDialog.newInstance(
-                presenter.getOnDateSetListener(),
-                now.get(Calendar.YEAR),
-                now.get(Calendar.MONTH),
-                now.get(Calendar.DAY_OF_MONTH));
-
-        dpd.show(getFragmentManager(), "DatePickerDialog");
-    }
-
-    @Override
-    public void setDate(String date) {
-        TVBirthDate.setText(date);
     }
 
     @OnClick(R.id.btn_register)
