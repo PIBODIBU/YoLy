@@ -19,6 +19,8 @@ android {
 
         // Vector drawables support
         vectorDrawables.useSupportLibrary = true
+
+        renderscriptSupportModeEnabled true
     }
 
     dexOptions {
@@ -75,7 +77,7 @@ dependencies {
     // Navigation Drawer
     compile 'com.mikepenz:community-material-typeface:1.5.54.2@aar'
     compile 'com.mikepenz:google-material-typeface:2.2.0.2.original@aar'
-    compile('com.mikepenz:materialdrawer:5.3.5@aar') {
+    compile('com.mikepenz:materialdrawer:5.7.0@aar') {
         transitive = true
     }
 
@@ -104,4 +106,7 @@ dependencies {
     // Other Material Design libraries
     compile 'me.zhanghai.android.materialprogressbar:library:1.1.7'
     compile 'com.wdullaer:materialdatetimepicker:2.5.0'
+
+    compile 'fr.avianey.com.viewpagerindicator:library:2.4.1.1@aar'
+    compile 'com.github.mmin18:realtimeblurview:1.0.4'
 }

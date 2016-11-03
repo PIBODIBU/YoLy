@@ -7,6 +7,8 @@
     <color name="colorAccent">#3e4d68</color>
     <color name="colorAccentLight">#607d8b</color>
 
+    <color name="drawer_bg">#e1ffffff</color>
+
     <color name="colorTextPrimary">#3e4d68</color>
     <color name="colorTextAccent">#365fb6</color>
     <color name="colorTextInput">#313131</color>

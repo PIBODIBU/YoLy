@@ -18,10 +18,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.BeforeLoginActivity" />
+        <activity
+            android:name=".ui.activity.BeforeLoginActivity"
+            android:exported="true" /> <!-- TODO DEBUG -->
         <activity android:name=".ui.activity.LoginActivity" />
         <activity android:name=".ui.activity.RegisterActivity" />
-
         <activity
             android:name=".ui.activity.LearnActivity"
             android:exported="true" /> <!-- TODO DEBUG -->
@@ -30,6 +31,9 @@
             android:exported="true" /> <!-- TODO DEBUG -->
         <activity
             android:name=".ui.activity.AfterRegisterActivity"
+            android:exported="true" /> <!-- TODO DEBUG -->
+        <activity
+            android:name=".ui.activity.NewsActivity"
             android:exported="true" /> <!-- TODO DEBUG -->
     </application>
 
