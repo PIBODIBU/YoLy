@@ -1,9 +1,9 @@
 package yoly.com.android.yoly.ui.activity;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 import butterknife.ButterKnife;
 import yoly.com.android.yoly.R;
@@ -27,7 +27,7 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 Intent intent = new Intent(SplashActivity.this,
 //                        sharedPrefHelper.isFirstLaunch() ? LearnActivity.class : BeforeLoginActivity.class);
-                        NewsActivity.class);
+                        BeforeLoginActivity.class);
                 SplashActivity.this.startActivity(intent);
                 SplashActivity.this.finish();
             }

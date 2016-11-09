@@ -5,7 +5,6 @@ import yoly.com.android.yoly.ui.presenter.NewsListPresenter;
 import yoly.com.android.yoly.ui.view.NewsListView;
 
 public class NewsListPresenterImpl implements NewsListPresenter {
-
     private NewsListView view;
 
     public NewsListPresenterImpl(NewsListView view) {

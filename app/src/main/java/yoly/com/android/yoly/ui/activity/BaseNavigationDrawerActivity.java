@@ -3,30 +3,24 @@ package yoly.com.android.yoly.ui.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.LinearLayout;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.ContainerDrawerItem;
-import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
-
-import java.util.HashMap;
 
 import yoly.com.android.yoly.R;
 
 public class BaseNavigationDrawerActivity extends AppCompatActivity {
-
     private final String TAG = getClass().getSimpleName();
 
     protected DrawerBuilder drawerBuilder = null;
@@ -118,10 +112,18 @@ public class BaseNavigationDrawerActivity extends AppCompatActivity {
 
         final View toLikedView = getLayoutInflater().inflate(R.layout.drawer_item, null);
         ((TextView) toLikedView).setText(getResources().getString(R.string.drawer_item_to_liked));
+        toLikedView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(BaseNavigationDrawerActivity.this, LikedActivity.class)
+                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                finish();
+            }
+        });
         final ContainerDrawerItem toLiked = new ContainerDrawerItem()
                 .withView(toLikedView)
                 .withDivider(false)
-                .withIdentifier(DrawerItems.ToLikedActivity.ordinal());
+                .withIdentifier(DrawerItems.LikedActivity.ordinal());
 
         final View newsView = getLayoutInflater().inflate(R.layout.drawer_item, null);
         ((TextView) newsView).setText(getResources().getString(R.string.drawer_item_news));
@@ -226,6 +228,16 @@ public class BaseNavigationDrawerActivity extends AppCompatActivity {
                                         break;
                                     }
                                 }
+                                case LikedActivity: {
+                                    if (currentClass.equals(LikedActivity.class.getSimpleName())) {
+                                        break;
+                                    } else {
+                                        startActivity(new Intent(BaseNavigationDrawerActivity.this, LikedActivity.class)
+                                                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                                        finish();
+                                        break;
+                                    }
+                                }
                                 default: {
                                     break;
                                 }
@@ -288,6 +300,12 @@ public class BaseNavigationDrawerActivity extends AppCompatActivity {
     }
 
     public enum DrawerItems {
-        NewsActivity, TryLookActivity, PopularLooksActivity, DeleteLookActivity, ToLikedActivity, ChatActivity, AccountActivity,
+        NewsActivity,
+        TryLookActivity,
+        PopularLooksActivity,
+        DeleteLookActivity,
+        LikedActivity,
+        ChatActivity,
+        AccountActivity,
     }
 }

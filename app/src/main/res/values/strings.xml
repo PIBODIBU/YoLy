@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">YoLy</string>
+
+    <integer name="com_vk_sdk_AppId">5713449</integer>
+
     <string name="tv_country_list_title">Страны</string>
     <string name="country_choose_hint">Выберите страну</string>
     <string name="tv_title_repeat_password">Повторите пароль</string>
@@ -39,4 +42,5 @@
     <string name="drawer_item_delete_look">СТЕРЕТЬ LOOK\'S</string>
     <string name="drawer_item_to_liked">В ИЗБРАННОЕ</string>
     <string name="tv_drawer_share">Рассказать друзьям</string>
+    <string name="activity_liked_title">избранное</string>
 </resources>

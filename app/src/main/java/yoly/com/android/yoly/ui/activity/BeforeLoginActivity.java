@@ -1,13 +1,20 @@
 package yoly.com.android.yoly.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.viewpagerindicator.CirclePageIndicator;
+import com.vk.sdk.VKAccessToken;
+import com.vk.sdk.VKCallback;
+import com.vk.sdk.VKSdk;
+import com.vk.sdk.api.VKError;
 
 import java.util.LinkedList;
 
@@ -18,8 +25,9 @@ import yoly.com.android.yoly.helper.Values;
 import yoly.com.android.yoly.ui.adapter.BeforeLoginPagerAdapter;
 import yoly.com.android.yoly.ui.fragment.BeforeLoginFragment;
 import yoly.com.android.yoly.ui.fragment.LearnFragment;
+import yoly.com.android.yoly.ui.view.BeforeLoginView;
 
-public class BeforeLoginActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener {
+public class BeforeLoginActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, BeforeLoginView {
     private final String TAG = getClass().getSimpleName();
 
     @BindView(R.id.view_pager)
@@ -52,7 +60,8 @@ public class BeforeLoginActivity extends AppCompatActivity implements ViewPager.
         fragments.add(new LearnFragment()
                 .setDescription(getResources().getString(R.string.slide_title_4))
                 .setImageRes(R.drawable.slide_learn_3));
-        fragments.add(new BeforeLoginFragment());
+        fragments.add(new BeforeLoginFragment()
+                .setView(this));
 
         adapter = new BeforeLoginPagerAdapter(getSupportFragmentManager(), fragments);
         viewPager.setAdapter(adapter);
@@ -66,6 +75,24 @@ public class BeforeLoginActivity extends AppCompatActivity implements ViewPager.
     @Override
     protected void onDestroy() {
         super.onDestroy();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (!VKSdk.onActivityResult(requestCode, resultCode, data, new VKCallback<VKAccessToken>() {
+            @Override
+            public void onResult(VKAccessToken res) {
+                Toast.makeText(BeforeLoginActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                // User passed Authorization
+            }
+
+            @Override
+            public void onError(VKError error) {
+                // User didn't pass Authorization
+            }
+        })) {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
     }
 
     @Override
@@ -83,6 +110,21 @@ public class BeforeLoginActivity extends AppCompatActivity implements ViewPager.
 
     @Override
     public void onPageScrollStateChanged(int state) {
+
+    }
+
+    @Override
+    public void socialLoginVK() {
+        VKSdk.login(this, "email", "status");
+    }
+
+    @Override
+    public void socialLoginFB() {
+
+    }
+
+    @Override
+    public void socialLoginTW() {
 
     }
 }

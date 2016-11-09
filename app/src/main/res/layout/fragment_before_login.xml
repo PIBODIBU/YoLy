@@ -69,23 +69,26 @@
             android:gravity="center_horizontal"
             android:orientation="horizontal">
 
-            <ImageView
+            <ImageButton
+                android:id="@+id/ib_social_vk"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_margin="8dp"
-                app:srcCompat="@drawable/ic_social_vk" />
+                android:background="@drawable/ic_social_vk" />
 
-            <ImageView
+            <ImageButton
+                android:id="@+id/ib_social_fb"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_margin="8dp"
-                app:srcCompat="@drawable/ic_social_facebook" />
+                android:background="@drawable/ic_social_facebook" />
 
-            <ImageView
+            <ImageButton
+                android:id="@+id/ib_social_tw"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_margin="8dp"
-                app:srcCompat="@drawable/ic_social_twitter" />
+                android:background="@drawable/ic_social_twitter" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
