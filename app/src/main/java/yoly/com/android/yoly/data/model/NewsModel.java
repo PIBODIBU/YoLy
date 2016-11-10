@@ -1,6 +1,8 @@
 package yoly.com.android.yoly.data.model;
 
-public class NewsModel {
+import java.io.Serializable;
+
+public class NewsModel implements Serializable {
     private String title;
     private String date;
     private String photoUrl;

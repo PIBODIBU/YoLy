@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.mikepenz.materialdrawer.Drawer;
@@ -37,12 +36,6 @@ public class BaseNavigationDrawerActivity extends AppCompatActivity {
         if (drawer == null) {
             return;
         }
-
-        /*if (basename.equals(ManListActivity.class.getSimpleName())) {
-            drawer.setSelection(DrawerItems.ManListActivity.ordinal());
-        } else {
-            drawer.setSelection(-1);
-        }*/
     }
 
     protected void setToolbarTitle(String title) {
@@ -127,6 +120,14 @@ public class BaseNavigationDrawerActivity extends AppCompatActivity {
 
         final View newsView = getLayoutInflater().inflate(R.layout.drawer_item, null);
         ((TextView) newsView).setText(getResources().getString(R.string.drawer_item_news));
+        newsView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(BaseNavigationDrawerActivity.this, NewsListActivity.class)
+                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                finish();
+            }
+        });
         final ContainerDrawerItem news = new ContainerDrawerItem()
                 .withView(newsView)
                 .withDivider(false)
@@ -219,20 +220,10 @@ public class BaseNavigationDrawerActivity extends AppCompatActivity {
 
                             switch (drawerItems) {
                                 case NewsActivity: {
-                                    if (currentClass.equals(NewsActivity.class.getSimpleName())) {
+                                    if (currentClass.equals(NewsListActivity.class.getSimpleName())) {
                                         break;
                                     } else {
-                                        startActivity(new Intent(BaseNavigationDrawerActivity.this, NewsActivity.class)
-                                                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                                        finish();
-                                        break;
-                                    }
-                                }
-                                case LikedActivity: {
-                                    if (currentClass.equals(LikedActivity.class.getSimpleName())) {
-                                        break;
-                                    } else {
-                                        startActivity(new Intent(BaseNavigationDrawerActivity.this, LikedActivity.class)
+                                        startActivity(new Intent(BaseNavigationDrawerActivity.this, NewsListActivity.class)
                                                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                                         finish();
                                         break;
@@ -289,8 +280,6 @@ public class BaseNavigationDrawerActivity extends AppCompatActivity {
     @Override
     public void finish() {
         super.finish();
-
-//        overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
     }
 
     @Override

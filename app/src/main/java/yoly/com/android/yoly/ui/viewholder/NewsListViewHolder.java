@@ -10,6 +10,9 @@ import butterknife.ButterKnife;
 import yoly.com.android.yoly.R;
 
 public class NewsListViewHolder extends RecyclerView.ViewHolder {
+    @BindView(R.id.root_view)
+    public View rootView;
+
     @BindView(R.id.tv_title)
     public TextView TVTitle;
 

@@ -54,7 +54,7 @@ public class AfterRegisterActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_continue)
     public void startUsing() {
-        startActivity(new Intent(AfterRegisterActivity.this, NewsActivity.class));
+        startActivity(new Intent(AfterRegisterActivity.this, NewsListActivity.class));
         finish();
     }
 }

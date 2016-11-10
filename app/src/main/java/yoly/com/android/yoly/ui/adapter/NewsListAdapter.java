@@ -3,6 +3,7 @@ package yoly.com.android.yoly.ui.adapter;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.squareup.picasso.Picasso;
@@ -18,6 +19,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListViewHolder> {
 
     private Context context;
     private ArrayList<NewsModel> dataSet;
+    private OnClickListener onClickListener;
 
     public NewsListAdapter(Context context, ArrayList<NewsModel> dataSet) {
         this.context = context;
@@ -31,8 +33,16 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListViewHolder> {
 
     @Override
     public void onBindViewHolder(NewsListViewHolder holder, int position) {
-        NewsModel newsModel = dataSet.get(position);
+        final NewsModel newsModel = dataSet.get(position);
 
+        holder.rootView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (onClickListener != null) {
+                    onClickListener.onItemClick(newsModel);
+                }
+            }
+        });
         holder.TVTitle.setText(newsModel.getTitle());
         holder.TVDate.setText(newsModel.getDate());
         holder.TVCommentsNum.setText(String.valueOf(newsModel.getCommentsNum()));
@@ -50,5 +60,13 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListViewHolder> {
 
     public ArrayList<NewsModel> getDataSet() {
         return dataSet;
+    }
+
+    public interface OnClickListener {
+        void onItemClick(NewsModel model);
+    }
+
+    public void setOnClickListener(OnClickListener onClickListener) {
+        this.onClickListener = onClickListener;
     }
 }

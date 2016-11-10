@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:orientation="vertical">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_profile_photo"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/cat" />
+
+    <TextView
+        android:id="@+id/tv_profile_name"
+        style="@style/AppTheme.TextView.Primary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_toEndOf="@+id/iv_profile_photo"
+        android:layout_toRightOf="@+id/iv_profile_photo"
+        android:text="Name Surname"
+        android:textSize="16sp" />
+
+    <TextView
+        style="@style/AppTheme.TextView.Primary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/tv_profile_name"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_toEndOf="@+id/iv_profile_photo"
+        android:layout_toRightOf="@+id/iv_profile_photo"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
+</RelativeLayout>

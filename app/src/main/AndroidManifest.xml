@@ -34,14 +34,15 @@
             android:name=".ui.activity.AfterRegisterActivity"
             android:exported="true" /> <!-- TODO DEBUG -->
         <activity
-            android:name=".ui.activity.NewsActivity"
+            android:name=".ui.activity.NewsListActivity"
             android:exported="true" /> <!-- TODO DEBUG -->
 
         <activity
             android:name="com.vk.sdk.VKServiceActivity"
             android:label="ServiceActivity"
             android:theme="@style/VK.Transparent" />
-        <activity android:name=".ui.activity.LikedActivity"></activity>
+        <activity android:name=".ui.activity.LikedActivity" />
+        <activity android:name=".ui.activity.NewsActivity"></activity>
     </application>
 
 </manifest>
