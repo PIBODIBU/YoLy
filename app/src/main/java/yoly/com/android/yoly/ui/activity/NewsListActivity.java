@@ -12,7 +12,9 @@ import butterknife.ButterKnife;
 import yoly.com.android.yoly.R;
 import yoly.com.android.yoly.data.model.NewsModel;
 import yoly.com.android.yoly.helper.IntentKeys;
+import yoly.com.android.yoly.ui.activity.base.BaseNavigationDrawerActivity;
 import yoly.com.android.yoly.ui.adapter.NewsListAdapter;
+import yoly.com.android.yoly.ui.helper.decorator.NewsListVerticalSpaceItemDecoration;
 import yoly.com.android.yoly.ui.presenter.NewsListPresenter;
 import yoly.com.android.yoly.ui.presenter.implementation.NewsListPresenterImpl;
 import yoly.com.android.yoly.ui.view.NewsListView;
@@ -56,6 +58,7 @@ public class NewsListActivity extends BaseNavigationDrawerActivity implements Ne
         presenter.fillDataSet();
 
         recyclerView.setLayoutManager(layoutManager);
+        recyclerView.addItemDecoration(new NewsListVerticalSpaceItemDecoration());
         recyclerView.setAdapter(adapter);
         adapter.setOnClickListener(new NewsListAdapter.OnClickListener() {
             @Override

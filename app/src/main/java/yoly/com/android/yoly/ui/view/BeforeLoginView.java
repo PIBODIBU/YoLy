@@ -6,4 +6,6 @@ public interface BeforeLoginView {
     void socialLoginFB();
 
     void socialLoginTW();
+
+    void redirectToMainPage();
 }

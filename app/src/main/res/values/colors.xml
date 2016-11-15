@@ -29,4 +29,5 @@
     <color name="pager_indicator_unselected">#78909c</color>
 
     <color name="white">#ffffff</color>
+    <color name="white_100">#64ffffff</color>
 </resources>

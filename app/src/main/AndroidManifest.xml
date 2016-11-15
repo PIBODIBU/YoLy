@@ -5,6 +5,10 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
     <application
         android:name=".helper.Application"
         android:allowBackup="true"
@@ -42,7 +46,8 @@
             android:label="ServiceActivity"
             android:theme="@style/VK.Transparent" />
         <activity android:name=".ui.activity.LikedActivity" />
-        <activity android:name=".ui.activity.NewsActivity"></activity>
+        <activity android:name=".ui.activity.NewsActivity" />
+        <activity android:name=".ui.activity.PopularLooksActivity" />
     </application>
 
 </manifest>

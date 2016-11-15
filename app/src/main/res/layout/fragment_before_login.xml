@@ -37,14 +37,12 @@
 
     <Button
         android:id="@+id/btn_login"
-        style="@style/AppTheme.Button"
+        style="@style/AppTheme.Button.Outline"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp"
-        android:background="@drawable/btn_primary_outline"
-        android:text="@string/btn_before_login_login"
-        android:textColor="@color/colorTextPrimaryDark" />
+        android:text="@string/btn_before_login_login" />
 
     <LinearLayout
         android:layout_width="match_parent"

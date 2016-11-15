@@ -68,6 +68,11 @@
         <item name="android:textColor">@color/colorTextPrimary</item>
     </style>
 
+    <style name="AppTheme.TextView.Cash" parent="AppTheme.TextView">
+        <item name="android:textColor">@color/md_yellow_700</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
     <style name="AppTheme.TextView.Primary">
         <item name="android:textColor">@color/colorTextPrimary</item>
     </style>
@@ -84,6 +89,22 @@
         <item name="android:paddingLeft">16dp</item>
         <item name="android:paddingRight">16dp</item>
         <item name="android:minWidth">200dp</item>
+    </style>
+
+    <style name="AppTheme.Button.Outline" parent="AppTheme.Button">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:background">@drawable/btn_primary_outline</item>
+    </style>
+
+    <style name="AppTheme.Button.Outline.White" parent="AppTheme.Button.Outline">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/btn_white_outline</item>
+    </style>
+
+    <style name="AppTheme.Button.Outline.White.Small" parent="AppTheme.Button.Outline.White">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:minWidth">100dp</item>
+        <item name="android:background">@drawable/btn_white_outline</item>
     </style>
 
     <style name="AppTheme.TextView.Secondary">

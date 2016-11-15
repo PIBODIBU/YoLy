@@ -78,12 +78,22 @@ public class BeforeLoginActivity extends AppCompatActivity implements ViewPager.
     }
 
     @Override
+    public void redirectToMainPage() {
+        startActivity(new Intent(BeforeLoginActivity.this, NewsListActivity.class)
+                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+        finish();
+    }
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (!VKSdk.onActivityResult(requestCode, resultCode, data, new VKCallback<VKAccessToken>() {
             @Override
             public void onResult(VKAccessToken res) {
-                Toast.makeText(BeforeLoginActivity.this, "Success", Toast.LENGTH_SHORT).show();
                 // User passed Authorization
+
+                redirectToMainPage();
             }
 
             @Override
