@@ -1,5 +1,6 @@
 package yoly.com.android.yoly.ui.activity;
 
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,6 +18,9 @@ import yoly.com.android.yoly.ui.presenter.implementation.NewsPresenterImpl;
 import yoly.com.android.yoly.ui.view.NewsView;
 
 public class NewsActivity extends AppCompatActivity implements NewsView {
+    @BindView(R.id.scroll_view)
+    public NestedScrollView scrollView;
+
     @BindView(R.id.recycler_view)
     public RecyclerView recyclerView;
 
