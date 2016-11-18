@@ -69,7 +69,7 @@
     </style>
 
     <style name="AppTheme.TextView.Cash" parent="AppTheme.TextView">
-        <item name="android:textColor">@color/md_yellow_700</item>
+        <item name="android:textColor">@color/md_yellow_800</item>
         <item name="android:textSize">24sp</item>
     </style>
 

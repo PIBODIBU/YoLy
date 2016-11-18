@@ -23,15 +23,6 @@
             android:layout_width="200dp"
             android:layout_height="80dp"
             app:srcCompat="@drawable/app_logo" />
-
-        <TextView
-            android:id="@+id/tv_greets"
-            style="@style/AppTheme.TextView.Primary"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:gravity="center"
-            android:text="Персональная примерочная\nв вашем смартфоне" />
     </LinearLayout>
 
     <ImageView

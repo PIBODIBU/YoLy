@@ -47,4 +47,6 @@
     <string name="action_take_photo">Сделать фото</string>
     <string name="action_load_photo">Выбрать фото с галереи</string>
     <string name="popular_looks_btn_more">Подробнее</string>
+    <string name="rub">₽</string>
+    <string name="btn_buy_pro">Купить PRO</string>
 </resources>

@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 public class NewsListVerticalSpaceItemDecoration extends RecyclerView.ItemDecoration {
-    private final int VERTICAL_MARGIN = 16;
+    private final int VERTICAL_MARGIN = 2;
 
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent,

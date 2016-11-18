@@ -18,9 +18,10 @@ import com.mikepenz.materialdrawer.model.ContainerDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 import yoly.com.android.yoly.R;
+import yoly.com.android.yoly.ui.activity.AccountActivity;
 import yoly.com.android.yoly.ui.activity.LikedActivity;
 import yoly.com.android.yoly.ui.activity.NewsListActivity;
-import yoly.com.android.yoly.ui.activity.PopularLooksActivity;
+import yoly.com.android.yoly.ui.activity.ProLooksActivity;
 
 public abstract class BaseNavigationDrawerActivity extends AppCompatActivity {
     private final String TAG = getClass().getSimpleName();
@@ -97,7 +98,7 @@ public abstract class BaseNavigationDrawerActivity extends AppCompatActivity {
         popularLooksView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(BaseNavigationDrawerActivity.this, PopularLooksActivity.class)
+                startActivity(new Intent(BaseNavigationDrawerActivity.this, ProLooksActivity.class)
                         .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                 finish();
             }
@@ -153,6 +154,14 @@ public abstract class BaseNavigationDrawerActivity extends AppCompatActivity {
 
         final View accountView = getLayoutInflater().inflate(R.layout.drawer_item, null);
         ((TextView) accountView).setText(getResources().getString(R.string.drawer_item_account));
+        accountView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(BaseNavigationDrawerActivity.this, AccountActivity.class)
+                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                finish();
+            }
+        });
         final ContainerDrawerItem account = new ContainerDrawerItem()
                 .withView(accountView)
                 .withDivider(false)
