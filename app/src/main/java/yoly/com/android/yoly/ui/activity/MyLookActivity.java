@@ -44,6 +44,7 @@ public class MyLookActivity extends BaseNavigationDrawerActivity {
 
         ButterKnife.bind(this);
         getDrawer();
+        setStatusBarColor(android.R.color.white);
 
         addClipArt();
     }

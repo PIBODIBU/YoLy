@@ -12,6 +12,7 @@
 
         <item name="android:popupMenuStyle">@style/AppTheme.PopupMenu</item>
 
+        <item name="android:windowLightStatusBar">true</item>
         <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
 
         <item name="material_drawer_background">@color/drawer_bg</item>
