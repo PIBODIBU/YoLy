@@ -58,6 +58,7 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/btn_more"
         style="@style/AppTheme.Button.Outline.White.Small"
         android:layout_width="wrap_content"
         android:layout_height="35dp"

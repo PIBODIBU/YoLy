@@ -3,6 +3,8 @@ package yoly.com.android.yoly.ui.activity.base;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
@@ -17,13 +19,16 @@ import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.ContainerDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import yoly.com.android.yoly.R;
 import yoly.com.android.yoly.ui.activity.AccountActivity;
 import yoly.com.android.yoly.ui.activity.LikedActivity;
+import yoly.com.android.yoly.ui.activity.MyLookActivity;
 import yoly.com.android.yoly.ui.activity.NewsListActivity;
 import yoly.com.android.yoly.ui.activity.ProLooksActivity;
 
-public abstract class BaseNavigationDrawerActivity extends AppCompatActivity {
+public abstract class BaseNavigationDrawerActivity extends BaseActivity {
     private final String TAG = getClass().getSimpleName();
 
     protected DrawerBuilder drawerBuilder = null;
@@ -88,6 +93,15 @@ public abstract class BaseNavigationDrawerActivity extends AppCompatActivity {
 
         final View tryLookView = getLayoutInflater().inflate(R.layout.drawer_item, null);
         ((TextView) tryLookView).setText(getResources().getString(R.string.drawer_item_try_look));
+        tryLookView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(BaseNavigationDrawerActivity.this, MyLookActivity.class)
+                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                finish();
+            }
+        });
+
         final ContainerDrawerItem tryLook = new ContainerDrawerItem()
                 .withView(tryLookView)
                 .withDivider(false)
@@ -168,6 +182,12 @@ public abstract class BaseNavigationDrawerActivity extends AppCompatActivity {
                 .withIdentifier(DrawerItems.AccountActivity.ordinal());
 
         final View headView = getLayoutInflater().inflate(R.layout.drawer_item_back_arrow, null);
+        headView.findViewById(R.id.btn_back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawer.closeDrawer();
+            }
+        });
         final ContainerDrawerItem head = new ContainerDrawerItem()
                 .withView(headView)
                 .withDivider(false);

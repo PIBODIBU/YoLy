@@ -19,6 +19,8 @@
             android:descendantFocusability="blocksDescendants"
             android:orientation="vertical">
 
+            <include layout="@layout/toolbar" />
+
             <TextView
                 android:id="@+id/tv_title"
                 style="@style/AppTheme.TextView.Primary.Title"

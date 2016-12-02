@@ -49,6 +49,10 @@
         <activity android:name=".ui.activity.NewsActivity" />
         <activity android:name=".ui.activity.ProLooksActivity" />
         <activity android:name=".ui.activity.AccountActivity" />
+        <activity android:name=".ui.activity.ProLookInfoActivity" />
+        <activity
+            android:name=".ui.activity.MyLookActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

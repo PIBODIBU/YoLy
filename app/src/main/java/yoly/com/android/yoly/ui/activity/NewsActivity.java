@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import yoly.com.android.yoly.R;
 import yoly.com.android.yoly.data.model.NewsComment;
 import yoly.com.android.yoly.ui.adapter.NewsAdapter;
@@ -63,5 +64,10 @@ public class NewsActivity extends AppCompatActivity implements NewsView {
     @Override
     public NewsAdapter getAdapter() {
         return adapter;
+    }
+
+    @OnClick(R.id.iv_arrow_back)
+    public void back() {
+        this.finish();
     }
 }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.squareup.picasso.Picasso;
@@ -19,6 +20,7 @@ public class ProLooksAdapter extends RecyclerView.Adapter<ProLooksViewHolder> {
 
     private ArrayList<ProLookModel> dataSet;
     private Context context;
+    private View.OnClickListener onClickListener;
 
     public ProLooksAdapter(ArrayList<ProLookModel> dataSet, Context context) {
         this.dataSet = dataSet;
@@ -43,6 +45,7 @@ public class ProLooksAdapter extends RecyclerView.Adapter<ProLooksViewHolder> {
         holder.TVCost.setText(model.getCost().concat(rubChar));
         holder.TVType.setText(model.getType());
         holder.TVSeason.setText(model.getSeason());
+        holder.BTNMore.setOnClickListener(onClickListener);
 
         Picasso
                 .with(context)
@@ -53,5 +56,9 @@ public class ProLooksAdapter extends RecyclerView.Adapter<ProLooksViewHolder> {
     @Override
     public int getItemCount() {
         return dataSet == null ? 0 : dataSet.size();
+    }
+
+    public void setOnClickListener(View.OnClickListener onClickListener) {
+        this.onClickListener = onClickListener;
     }
 }

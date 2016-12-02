@@ -19,6 +19,7 @@
     <color name="colorDividerLight">#30000000</color>
     <color name="colorBackground">#EEEEEE</color>
     <color name="primary_120">#783e4d68</color>
+    <color name="color_cash">#bdaf5e</color>
 
     <color name="btn_gradient_start">#313d52</color>
     <color name="btn_gradient_end">#4c5e7f</color>

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import yoly.com.android.yoly.R;
 import yoly.com.android.yoly.data.model.NewsModel;
 import yoly.com.android.yoly.helper.IntentKeys;
