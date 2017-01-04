@@ -4,7 +4,7 @@ apply plugin: 'realm-android'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion '25.0.0'
+    buildToolsVersion '25.0.2'
 
     defaultConfig {
         applicationId "yoly.com.android.yoly"
@@ -42,20 +42,17 @@ repositories {
 }
 
 ext {
-    supportLibraryVersion = '25.0.0'
-    playServicesVersion = '9.8.0'
+    supportLibraryVersion = '25.1.0'
+    playServicesVersion = '10.0.1'
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-
     // MultiDex
     compile 'com.android.support:multidex:1.0.1'
-
     // Google Play Services
     compile "com.google.android.gms:play-services:$playServicesVersion"
-
     // Support Libraries
     compile "com.android.support:appcompat-v7:$supportLibraryVersion"
     compile "com.android.support:design:$supportLibraryVersion"
@@ -68,24 +65,20 @@ dependencies {
     compile "com.android.support:support-annotations:$supportLibraryVersion"
     compile "com.android.support:support-v13:$supportLibraryVersion"
     compile "com.android.support:support-v4:$supportLibraryVersion"
-
     // Animation
     compile('com.github.ozodrukh:CircularReveal:2.0.1@aar') {
         transitive = true;
     }
-
     // Navigation Drawer
     compile 'com.mikepenz:community-material-typeface:1.5.54.2@aar'
     compile 'com.mikepenz:google-material-typeface:2.2.0.2.original@aar'
     compile('com.mikepenz:materialdrawer:5.7.0@aar') {
         transitive = true
     }
-
     // Images
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'de.hdodenhof:circleimageview:2.1.0'
-
     // Retrofit 2
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
@@ -94,22 +87,17 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp-urlconnection:3.4.1'
     compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
     compile 'com.squareup.okio:okio:1.9.0'
-
     // Butterknife
     compile 'com.jakewharton:butterknife:8.2.1'
     apt 'com.jakewharton:butterknife-compiler:8.2.1'
-
     // Image gallery
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.daimajia.slider:library:1.1.5@aar'
-
     // Other Material Design libraries
     compile 'me.zhanghai.android.materialprogressbar:library:1.1.7'
     compile 'com.wdullaer:materialdatetimepicker:2.5.0'
-
     compile 'fr.avianey.com.viewpagerindicator:library:2.4.1.1@aar'
     compile 'com.github.mmin18:realtimeblurview:1.0.4'
-
     // Social
     compile 'com.vk:androidsdk:1.6.5'
 }

@@ -3,9 +3,6 @@ package yoly.com.android.yoly.ui.activity.base;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -19,12 +16,10 @@ import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.ContainerDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import yoly.com.android.yoly.R;
 import yoly.com.android.yoly.ui.activity.AccountActivity;
 import yoly.com.android.yoly.ui.activity.LikedActivity;
-import yoly.com.android.yoly.ui.activity.MyLookActivity;
+import yoly.com.android.yoly.ui.activity.MyLookPhotoUploadActivity;
 import yoly.com.android.yoly.ui.activity.NewsListActivity;
 import yoly.com.android.yoly.ui.activity.ProLooksActivity;
 
@@ -96,7 +91,7 @@ public abstract class BaseNavigationDrawerActivity extends BaseActivity {
         tryLookView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(BaseNavigationDrawerActivity.this, MyLookActivity.class)
+                startActivity(new Intent(BaseNavigationDrawerActivity.this, MyLookPhotoUploadActivity.class)
                         .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                 finish();
             }

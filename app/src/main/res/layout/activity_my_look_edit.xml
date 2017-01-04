@@ -1,0 +1,76 @@
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.activity.MyLookPhotoUploadActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <RelativeLayout
+            android:id="@+id/rl_header"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:paddingBottom="8dp">
+
+            <android.support.v7.widget.AppCompatTextView
+                style="@style/AppTheme.TextView.Primary.Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:text="Your Look"
+                app:textAllCaps="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/laybg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/rl_controls"
+            android:layout_below="@+id/rl_header"
+            android:layout_weight="1"
+            android:background="@color/colorBackground" />
+
+        <RelativeLayout
+            android:id="@+id/rl_controls"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/iv_take_photo"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                app:srcCompat="@drawable/ic_file_upload_primary_24dp" />
+
+            <ImageView
+                android:id="@+id/iv_open_brand_list"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                app:srcCompat="@drawable/ic_keyboard_arrow_up_primary_24dp" />
+
+            <ImageView
+                android:id="@+id/iv_photo_from_gallery"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                app:srcCompat="@drawable/ic_settings_primary_24dp" />
+        </RelativeLayout>
+    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

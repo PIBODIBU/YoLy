@@ -27,7 +27,7 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 Intent intent = new Intent(SplashActivity.this,
 //                        sharedPrefHelper.isFirstLaunch() ? LearnActivity.class : BeforeLoginActivity.class);
-                        MyLookActivity.class);
+                        MyLookPhotoUploadActivity.class);
                 SplashActivity.this.startActivity(intent);
                 SplashActivity.this.finish();
             }

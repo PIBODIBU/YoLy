@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -51,8 +52,7 @@
         <activity android:name=".ui.activity.AccountActivity" />
         <activity android:name=".ui.activity.ProLookInfoActivity" />
         <activity
-            android:name=".ui.activity.MyLookActivity"
+            android:name=".ui.activity.MyLookPhotoUploadActivity"
             android:exported="true" />
     </application>
-
 </manifest>
