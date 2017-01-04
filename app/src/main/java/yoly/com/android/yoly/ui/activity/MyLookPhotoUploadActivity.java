@@ -57,7 +57,6 @@ public class MyLookPhotoUploadActivity extends BaseNavigationDrawerActivity {
 
         ButterKnife.bind(this);
         getDrawer();
-        setStatusBarColor(android.R.color.white);
 
         addClipArt();
     }
@@ -67,7 +66,6 @@ public class MyLookPhotoUploadActivity extends BaseNavigationDrawerActivity {
         if (resultCode == RESULT_OK) {
             if (requestCode == REQUEST_SELECT_PICTURE) {
                 Uri selectedImageUri = data.getData();
-                Log.d(TAG, "onActivityResult()-> " + selectedImageUri);
 
                 if (null != selectedImageUri) {
                     String path = getPathFromURI(selectedImageUri);
@@ -81,27 +79,6 @@ public class MyLookPhotoUploadActivity extends BaseNavigationDrawerActivity {
                                     layBg.setBackground(resource.getCurrent());
                                 }
                             });
-
-                    /*Picasso
-                            .with(this)
-                            .load(selectedImageUri)
-                            .error(R.mipmap.ic_launcher)
-                            .into(new Target() {
-                                @Override
-                                public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-                                    layBg.setBackground(new BitmapDrawable(MyLookPhotoUploadActivity.this.getResources(), bitmap));
-                                }
-
-                                @Override
-                                public void onBitmapFailed(Drawable errorDrawable) {
-                                    layBg.setBackground(errorDrawable);
-                                }
-
-                                @Override
-                                public void onPrepareLoad(Drawable placeHolderDrawable) {
-
-                                }
-                            });*/
                 }
             }
 

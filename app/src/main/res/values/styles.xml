@@ -12,13 +12,13 @@
         <item name="android:popupMenuStyle">@style/AppTheme.PopupMenu</item>
 
         <item name="material_drawer_background">@color/drawer_bg</item>
-        <item name="material_drawer_primary_text">@color/material_drawer_primary_text</item>
-        <item name="material_drawer_primary_icon">@color/material_drawer_primary_icon</item>
-        <item name="material_drawer_secondary_text">@color/material_drawer_secondary_text</item>
+        <item name="material_drawer_primary_text">@color/colorTextPrimary</item>
+        <item name="material_drawer_primary_icon">@color/colorTextPrimary</item>
+        <item name="material_drawer_secondary_text">@color/colorTextPrimary</item>
         <item name="material_drawer_hint_text">@color/material_drawer_hint_text</item>
         <item name="material_drawer_divider">@color/material_drawer_divider</item>
-        <item name="material_drawer_selected">@color/material_drawer_selected</item>
-        <item name="material_drawer_selected_text">@color/material_drawer_selected_text</item>
+        <item name="material_drawer_selected">@color/drawer_bg</item>
+        <item name="material_drawer_selected_text">@color/colorTextPrimary</item>
         <item name="material_drawer_header_selection_text">
             @color/material_drawer_header_selection_text
         </item>
@@ -68,14 +68,21 @@
         <item name="android:textSize">24sp</item>
     </style>
 
-    <style name="AppTheme.TextView.Primary">
+    <style name="AppTheme.TextView.Primary" parent="AppTheme.TextView">
         <item name="android:textColor">@color/colorTextPrimary</item>
     </style>
 
-    <style name="AppTheme.TextView.Primary.Title">
-        <item name="android:textColor">@color/colorTextPrimary</item>
+    <style name="AppTheme.TextView.Primary.Title" parent="AppTheme.TextView.Primary">
         <item name="android:textSize">24sp</item>
         <item name="android:gravity">center</item>
+    </style>
+
+    <style name="AppTheme.TextView.Primary.Subtitle" parent="AppTheme.TextView.Primary">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="AppTheme.TextView.Primary.Small" parent="AppTheme.TextView.Primary">
+        <item name="android:textSize">16sp</item>
     </style>
 
     <style name="AppTheme.Button" parent="Widget.AppCompat.Button.Borderless">

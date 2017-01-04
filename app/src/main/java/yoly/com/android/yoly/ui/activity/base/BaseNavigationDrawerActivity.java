@@ -3,25 +3,30 @@ package yoly.com.android.yoly.ui.activity.base;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.TextView;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
-import com.mikepenz.materialdrawer.model.ContainerDrawerItem;
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
+import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 import yoly.com.android.yoly.R;
 import yoly.com.android.yoly.ui.activity.AccountActivity;
 import yoly.com.android.yoly.ui.activity.LikedActivity;
-import yoly.com.android.yoly.ui.activity.MyLookPhotoUploadActivity;
+import yoly.com.android.yoly.ui.activity.MyLookEditActivity;
+import yoly.com.android.yoly.ui.activity.NewsActivity;
 import yoly.com.android.yoly.ui.activity.NewsListActivity;
-import yoly.com.android.yoly.ui.activity.ProLooksActivity;
 
 public abstract class BaseNavigationDrawerActivity extends BaseActivity {
     private final String TAG = getClass().getSimpleName();
@@ -40,6 +45,8 @@ public abstract class BaseNavigationDrawerActivity extends BaseActivity {
         if (drawer == null) {
             return;
         }
+
+        drawer.setSelection(-1);
     }
 
     protected void setToolbarTitle(String title) {
@@ -79,6 +86,16 @@ public abstract class BaseNavigationDrawerActivity extends BaseActivity {
         }
     }
 
+    private PrimaryDrawerItem prepareDrawerItem(PrimaryDrawerItem drawerItem) {
+        drawerItem
+                .withIcon(R.drawable.ic_camera_alt_primary_24dp)
+                .withSelectedColorRes(android.R.color.transparent)
+                .withTextColorRes(R.color.colorTextPrimary)
+                .withSelectedTextColorRes(R.color.colorTextPrimary);
+
+        return drawerItem;
+    }
+
     public void setUpDrawerBuilder() {
         // Инициализируем Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -86,136 +103,59 @@ public abstract class BaseNavigationDrawerActivity extends BaseActivity {
         if (getSupportActionBar() != null)
             getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
-        final View tryLookView = getLayoutInflater().inflate(R.layout.drawer_item, null);
-        ((TextView) tryLookView).setText(getResources().getString(R.string.drawer_item_try_look));
-        tryLookView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(BaseNavigationDrawerActivity.this, MyLookPhotoUploadActivity.class)
-                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                finish();
-            }
-        });
+        // Items
+        final View header = getLayoutInflater().inflate(R.layout.drawer_head, null);
+        final View footer = getLayoutInflater().inflate(R.layout.drawer_footer, null);
+        Glide
+                .with(this)
+                .load(R.drawable.cat)
+                .into(((CircleImageView) ButterKnife.findById(header, R.id.iv_drawer_avatar)));
 
-        final ContainerDrawerItem tryLook = new ContainerDrawerItem()
-                .withView(tryLookView)
-                .withDivider(false)
-                .withIdentifier(DrawerItems.TryLookActivity.ordinal());
+        final PrimaryDrawerItem tryLook = new PrimaryDrawerItem()
+                .withIdentifier(DrawerItems.TryLookActivity.ordinal())
+                .withName("ПРИМЕРИТЬ LOOK");
 
-        final View popularLooksView = getLayoutInflater().inflate(R.layout.drawer_item, null);
-        ((TextView) popularLooksView).setText(getResources().getString(R.string.drawer_item_popular_looks));
-        popularLooksView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(BaseNavigationDrawerActivity.this, ProLooksActivity.class)
-                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                finish();
-            }
-        });
-        final ContainerDrawerItem popularLooks = new ContainerDrawerItem()
-                .withView(popularLooksView)
-                .withDivider(false)
-                .withIdentifier(DrawerItems.PopularLooksActivity.ordinal());
+        final PrimaryDrawerItem popularLooks = new PrimaryDrawerItem()
+                .withIdentifier(DrawerItems.PopularLooksActivity.ordinal())
+                .withName("FASHION LOOKS");
 
-        final View deleteLookView = getLayoutInflater().inflate(R.layout.drawer_item, null);
-        ((TextView) deleteLookView).setText(getResources().getString(R.string.drawer_item_delete_look));
-        final ContainerDrawerItem deleteLook = new ContainerDrawerItem()
-                .withView(deleteLookView)
-                .withDivider(false)
-                .withIdentifier(DrawerItems.DeleteLookActivity.ordinal());
+        final PrimaryDrawerItem liked = new PrimaryDrawerItem()
+                .withIdentifier(DrawerItems.LikedActivity.ordinal())
+                .withName("ИЗБРАННОЕ");
 
-        final View toLikedView = getLayoutInflater().inflate(R.layout.drawer_item, null);
-        ((TextView) toLikedView).setText(getResources().getString(R.string.drawer_item_to_liked));
-        toLikedView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(BaseNavigationDrawerActivity.this, LikedActivity.class)
-                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                finish();
-            }
-        });
-        final ContainerDrawerItem toLiked = new ContainerDrawerItem()
-                .withView(toLikedView)
-                .withDivider(false)
-                .withIdentifier(DrawerItems.LikedActivity.ordinal());
+        final PrimaryDrawerItem news = new PrimaryDrawerItem()
+                .withIdentifier(DrawerItems.NewsActivity.ordinal())
+                .withName("НОВОСТИ");
 
-        final View newsView = getLayoutInflater().inflate(R.layout.drawer_item, null);
-        ((TextView) newsView).setText(getResources().getString(R.string.drawer_item_news));
-        newsView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(BaseNavigationDrawerActivity.this, NewsListActivity.class)
-                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                finish();
-            }
-        });
-        final ContainerDrawerItem news = new ContainerDrawerItem()
-                .withView(newsView)
-                .withDivider(false)
-                .withIdentifier(DrawerItems.NewsActivity.ordinal());
+        final PrimaryDrawerItem chat = new PrimaryDrawerItem()
+                .withIdentifier(DrawerItems.ChatActivity.ordinal())
+                .withName("ЧАТ");
 
-        final View chatView = getLayoutInflater().inflate(R.layout.drawer_item, null);
-        ((TextView) chatView).setText(getResources().getString(R.string.drawer_item_chat));
-        final ContainerDrawerItem chat = new ContainerDrawerItem()
-                .withView(chatView)
-                .withDivider(false)
-                .withIdentifier(DrawerItems.ChatActivity.ordinal());
+        final PrimaryDrawerItem buy = new PrimaryDrawerItem()
+                .withIdentifier(DrawerItems.BuyActivity.ordinal())
+                .withName("КУПИТЬ");
 
-        final View accountView = getLayoutInflater().inflate(R.layout.drawer_item, null);
-        ((TextView) accountView).setText(getResources().getString(R.string.drawer_item_account));
-        accountView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(BaseNavigationDrawerActivity.this, AccountActivity.class)
-                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                finish();
-            }
-        });
-        final ContainerDrawerItem account = new ContainerDrawerItem()
-                .withView(accountView)
-                .withDivider(false)
-                .withIdentifier(DrawerItems.AccountActivity.ordinal());
-
-        final View headView = getLayoutInflater().inflate(R.layout.drawer_item_back_arrow, null);
-        headView.findViewById(R.id.btn_back).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                drawer.closeDrawer();
-            }
-        });
-        final ContainerDrawerItem head = new ContainerDrawerItem()
-                .withView(headView)
-                .withDivider(false);
-
-        final View bottomView = getLayoutInflater().inflate(R.layout.drawer_item_share, null);
-        final ContainerDrawerItem bottom = new ContainerDrawerItem()
-                .withView(bottomView)
-                .withDivider(false);
-
-        /**
-         * Implementing DrawerBuilder
-         */
-        // Get device's screen width
-        DisplayMetrics metrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        final PrimaryDrawerItem account = new PrimaryDrawerItem()
+                .withIdentifier(DrawerItems.Exit.ordinal())
+                .withName("ВЫЙТИ");
 
         drawerBuilder = new DrawerBuilder()
                 .withActivity(this)
-//                .withToolbar(toolbar)
+                .withSliderBackgroundColorRes(R.color.colorBackground)
                 .withActionBarDrawerToggle(false)
                 .withActionBarDrawerToggleAnimated(true)
-                .withDrawerWidthPx(metrics.widthPixels)
                 .withHeaderDivider(false)
+                .withHeader(header)
+                .withFooterDivider(false)
+                .withFooter(footer)
                 .addDrawerItems(
-                        head,
-                        tryLook,
-                        popularLooks,
-                        deleteLook,
-                        toLiked,
-                        news,
-                        chat,
-                        account,
-                        bottom
+                        prepareDrawerItem(tryLook),
+                        prepareDrawerItem(popularLooks),
+                        prepareDrawerItem(liked),
+                        prepareDrawerItem(news),
+                        prepareDrawerItem(chat),
+                        prepareDrawerItem(buy),
+                        prepareDrawerItem(account)
                 )
                 .withOnDrawerListener(new Drawer.OnDrawerListener() {
                     @Override
@@ -248,25 +188,50 @@ public abstract class BaseNavigationDrawerActivity extends BaseActivity {
                     // Обработка клика
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                         try {
-                            String currentClass = BaseNavigationDrawerActivity.this.getClass().getSimpleName();
+                            String currentClassName = BaseNavigationDrawerActivity.this.getClass().getSimpleName();
                             DrawerItems drawerItems = DrawerItems.values()[(int) drawerItem.getIdentifier()];
-
-                            Log.d(TAG, "onItemClick()-> currentClass: " + currentClass);
+                            AppCompatActivity selectedActivity = null;
 
                             switch (drawerItems) {
                                 case NewsActivity: {
-                                    if (currentClass.equals(NewsListActivity.class.getSimpleName())) {
-                                        break;
-                                    } else {
-                                        startActivity(new Intent(BaseNavigationDrawerActivity.this, NewsListActivity.class)
-                                                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                                        finish();
-                                        break;
-                                    }
+                                    selectedActivity = new NewsActivity();
+                                    break;
+                                }
+
+                                case TryLookActivity: {
+                                    break;
+                                }
+                                case PopularLooksActivity: {
+                                    break;
+                                }
+                                case LikedActivity: {
+                                    selectedActivity = new LikedActivity();
+                                    break;
+                                }
+                                case ChatActivity: {
+                                    break;
+                                }
+                                case AccountActivity: {
+                                    selectedActivity = new AccountActivity();
+                                    break;
+                                }
+                                case BuyActivity: {
+                                    break;
+                                }
+                                case Exit: {
+                                    finish();
+                                    return false;
                                 }
                                 default: {
                                     break;
                                 }
+                            }
+
+                            if (selectedActivity != null &&
+                                    !currentClassName.equals(selectedActivity.getClass().getSimpleName())) {
+                                startActivity(new Intent(BaseNavigationDrawerActivity.this, selectedActivity.getClass())
+                                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                                finish();
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -318,6 +283,11 @@ public abstract class BaseNavigationDrawerActivity extends BaseActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
     protected void onPostResume() {
         getCurrentSelection();
         super.onPostResume();
@@ -327,9 +297,10 @@ public abstract class BaseNavigationDrawerActivity extends BaseActivity {
         NewsActivity,
         TryLookActivity,
         PopularLooksActivity,
-        DeleteLookActivity,
         LikedActivity,
         ChatActivity,
         AccountActivity,
+        BuyActivity,
+        Exit,
     }
 }

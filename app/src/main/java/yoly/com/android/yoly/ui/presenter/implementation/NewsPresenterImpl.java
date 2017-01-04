@@ -30,6 +30,8 @@ public class NewsPresenterImpl implements NewsPresenter {
     public boolean isIntentValid(Intent intent) {
         if (intent == null)
             return false;
+        if (intent.getExtras() == null)
+            return false;
         if (!intent.getExtras().containsKey(IntentKeys.OBJECT_NEWS_MODEL))
             return false;
         if (intent.getExtras().getSerializable(IntentKeys.OBJECT_NEWS_MODEL) == null)

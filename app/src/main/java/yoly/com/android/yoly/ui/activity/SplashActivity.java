@@ -11,7 +11,6 @@ import yoly.com.android.yoly.helper.SharedPrefHelper;
 import yoly.com.android.yoly.helper.Values;
 
 public class SplashActivity extends AppCompatActivity {
-
     private SharedPrefHelper sharedPrefHelper;
 
     @Override
@@ -27,7 +26,8 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 Intent intent = new Intent(SplashActivity.this,
 //                        sharedPrefHelper.isFirstLaunch() ? LearnActivity.class : BeforeLoginActivity.class);
-                        MyLookPhotoUploadActivity.class);
+//                        MyLookPhotoUploadActivity.class);
+                        NewsActivity.class);
                 SplashActivity.this.startActivity(intent);
                 SplashActivity.this.finish();
             }
