@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="/home/simple/Projects/AndroidStudioProjects/YoLy/app/libs/StickerView/src/main/assets"/><source path="/home/simple/Projects/AndroidStudioProjects/YoLy/app/libs/StickerView/build/generated/assets/shaders/release"/></dataSet><dataSet config="release"><source path="/home/simple/Projects/AndroidStudioProjects/YoLy/app/libs/StickerView/src/release/assets"/></dataSet></merger>

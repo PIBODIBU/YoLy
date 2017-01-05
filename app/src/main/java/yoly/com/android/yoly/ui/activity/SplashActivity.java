@@ -3,14 +3,14 @@ package yoly.com.android.yoly.ui.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 
 import butterknife.ButterKnife;
 import yoly.com.android.yoly.R;
 import yoly.com.android.yoly.helper.SharedPrefHelper;
 import yoly.com.android.yoly.helper.Values;
+import yoly.com.android.yoly.ui.activity.base.BaseActivity;
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends BaseActivity {
     private SharedPrefHelper sharedPrefHelper;
 
     @Override
@@ -26,8 +26,7 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 Intent intent = new Intent(SplashActivity.this,
 //                        sharedPrefHelper.isFirstLaunch() ? LearnActivity.class : BeforeLoginActivity.class);
-//                        MyLookPhotoUploadActivity.class);
-                        NewsActivity.class);
+                        NewLookActivity.class);
                 SplashActivity.this.startActivity(intent);
                 SplashActivity.this.finish();
             }

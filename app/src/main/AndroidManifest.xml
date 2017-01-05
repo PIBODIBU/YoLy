@@ -52,7 +52,7 @@
         <activity android:name=".ui.activity.AccountActivity" />
         <activity android:name=".ui.activity.ProLookInfoActivity" />
         <activity
-            android:name=".ui.activity.MyLookPhotoUploadActivity"
+            android:name=".ui.activity.NewLookActivity"
             android:exported="true" />
     </application>
 </manifest>

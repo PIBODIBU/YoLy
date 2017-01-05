@@ -5,7 +5,7 @@ import android.os.Bundle;
 import yoly.com.android.yoly.R;
 import yoly.com.android.yoly.ui.activity.base.BaseNavigationDrawerActivity;
 
-public class MyLookEditActivity extends BaseNavigationDrawerActivity{
+public class LookEditActivity extends BaseNavigationDrawerActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

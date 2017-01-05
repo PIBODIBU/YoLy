@@ -3,15 +3,12 @@ package yoly.com.android.yoly.ui.activity.base;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.mikepenz.materialdrawer.Drawer;
@@ -24,9 +21,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import yoly.com.android.yoly.R;
 import yoly.com.android.yoly.ui.activity.AccountActivity;
 import yoly.com.android.yoly.ui.activity.LikedActivity;
-import yoly.com.android.yoly.ui.activity.MyLookEditActivity;
 import yoly.com.android.yoly.ui.activity.NewsActivity;
-import yoly.com.android.yoly.ui.activity.NewsListActivity;
 
 public abstract class BaseNavigationDrawerActivity extends BaseActivity {
     private final String TAG = getClass().getSimpleName();
@@ -88,7 +83,8 @@ public abstract class BaseNavigationDrawerActivity extends BaseActivity {
 
     private PrimaryDrawerItem prepareDrawerItem(PrimaryDrawerItem drawerItem) {
         drawerItem
-                .withIcon(R.drawable.ic_camera_alt_primary_24dp)
+                .withIconColorRes(R.color.colorPrimary)
+                .withSelectedIconColorRes(R.color.colorPrimary)
                 .withSelectedColorRes(android.R.color.transparent)
                 .withTextColorRes(R.color.colorTextPrimary)
                 .withSelectedTextColorRes(R.color.colorTextPrimary);
@@ -112,30 +108,37 @@ public abstract class BaseNavigationDrawerActivity extends BaseActivity {
                 .into(((CircleImageView) ButterKnife.findById(header, R.id.iv_drawer_avatar)));
 
         final PrimaryDrawerItem tryLook = new PrimaryDrawerItem()
+                .withIcon(R.drawable.drawer_item_new_look)
                 .withIdentifier(DrawerItems.TryLookActivity.ordinal())
                 .withName("ПРИМЕРИТЬ LOOK");
 
         final PrimaryDrawerItem popularLooks = new PrimaryDrawerItem()
+                .withIcon(R.drawable.drawer_item_fashion)
                 .withIdentifier(DrawerItems.PopularLooksActivity.ordinal())
                 .withName("FASHION LOOKS");
 
         final PrimaryDrawerItem liked = new PrimaryDrawerItem()
+                .withIcon(R.drawable.drawer_item_liked)
                 .withIdentifier(DrawerItems.LikedActivity.ordinal())
                 .withName("ИЗБРАННОЕ");
 
         final PrimaryDrawerItem news = new PrimaryDrawerItem()
+                .withIcon(R.drawable.drawer_item_news)
                 .withIdentifier(DrawerItems.NewsActivity.ordinal())
                 .withName("НОВОСТИ");
 
         final PrimaryDrawerItem chat = new PrimaryDrawerItem()
+                .withIcon(R.drawable.drawer_item_chat)
                 .withIdentifier(DrawerItems.ChatActivity.ordinal())
                 .withName("ЧАТ");
 
         final PrimaryDrawerItem buy = new PrimaryDrawerItem()
+                .withIcon(R.drawable.drawer_item_buy)
                 .withIdentifier(DrawerItems.BuyActivity.ordinal())
                 .withName("КУПИТЬ");
 
         final PrimaryDrawerItem account = new PrimaryDrawerItem()
+                .withIcon(R.drawable.drawer_item_exit)
                 .withIdentifier(DrawerItems.Exit.ordinal())
                 .withName("ВЫЙТИ");
 

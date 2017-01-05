@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/home/simple/Projects/AndroidStudioProjects/YoLy/app/libs/StickerView/build/intermediates/res/merged/androidTest/debug/drawable/flip.png",
+        "source": "/home/simple/Projects/AndroidStudioProjects/YoLy/app/libs/StickerView/build/intermediates/bundles/debug/res/drawable/flip.png"
+    },
+    {
+        "merged": "/home/simple/Projects/AndroidStudioProjects/YoLy/app/libs/StickerView/build/intermediates/res/merged/androidTest/debug/drawable/remove.png",
+        "source": "/home/simple/Projects/AndroidStudioProjects/YoLy/app/libs/StickerView/build/intermediates/bundles/debug/res/drawable/remove.png"
+    },
+    {
+        "merged": "/home/simple/Projects/AndroidStudioProjects/YoLy/app/libs/StickerView/build/intermediates/res/merged/androidTest/debug/drawable/zoominout.png",
+        "source": "/home/simple/Projects/AndroidStudioProjects/YoLy/app/libs/StickerView/build/intermediates/bundles/debug/res/drawable/zoominout.png"
+    }
+]

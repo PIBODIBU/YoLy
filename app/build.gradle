@@ -47,7 +47,6 @@ ext {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     // MultiDex
     compile 'com.android.support:multidex:1.0.1'
@@ -100,4 +99,5 @@ dependencies {
     compile 'com.github.mmin18:realtimeblurview:1.0.4'
     // Social
     compile 'com.vk:androidsdk:1.6.5'
+    compile project(':StickerView')
 }

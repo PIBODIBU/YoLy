@@ -1,1 +1,2 @@
-include ':app'
+include ':app', ':StickerView'
+project(':StickerView').projectDir = new File('app/libs/StickerView')
