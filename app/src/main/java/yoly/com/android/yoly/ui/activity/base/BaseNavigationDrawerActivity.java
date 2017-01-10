@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageButton;
 
 import com.bumptech.glide.Glide;
 import com.mikepenz.materialdrawer.Drawer;
@@ -30,6 +31,7 @@ public abstract class BaseNavigationDrawerActivity extends BaseActivity {
     protected Drawer drawer = null;
     private InputMethodManager inputMethodManager = null;
     private boolean wasInputActive = false;
+    private ImageButton hamburger;
 
     public BaseNavigationDrawerActivity() {
     }
@@ -93,12 +95,6 @@ public abstract class BaseNavigationDrawerActivity extends BaseActivity {
     }
 
     public void setUpDrawerBuilder() {
-        // Инициализируем Toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null)
-            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-
         // Items
         final View header = getLayoutInflater().inflate(R.layout.drawer_head, null);
         final View footer = getLayoutInflater().inflate(R.layout.drawer_footer, null);
@@ -294,6 +290,20 @@ public abstract class BaseNavigationDrawerActivity extends BaseActivity {
     protected void onPostResume() {
         getCurrentSelection();
         super.onPostResume();
+    }
+
+    public void setHamburger(ImageButton hamburger) {
+        this.hamburger = hamburger;
+
+        if (this.hamburger != null)
+            this.hamburger.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (drawer != null) {
+                        drawer.openDrawer();
+                    }
+                }
+            });
     }
 
     public enum DrawerItems {

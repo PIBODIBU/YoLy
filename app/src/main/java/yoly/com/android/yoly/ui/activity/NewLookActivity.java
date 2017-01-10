@@ -60,4 +60,9 @@ public class NewLookActivity extends BaseNavigationDrawerActivity implements New
                 .addToBackStack(null)
                 .commit();
     }
+
+    @Override
+    public NewLookActivity getActivity() {
+        return this;
+    }
 }

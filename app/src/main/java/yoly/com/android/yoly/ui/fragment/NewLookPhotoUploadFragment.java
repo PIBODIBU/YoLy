@@ -55,7 +55,6 @@ public class NewLookPhotoUploadFragment extends Fragment {
 
     @BindView(R.id.ib_done)
     ImageButton IBDone;
-
     private Drawable photo;
     private int clipartCount = 1000;
     private String currentPhotoPath;
