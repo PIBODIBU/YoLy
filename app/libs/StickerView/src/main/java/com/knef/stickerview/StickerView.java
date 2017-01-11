@@ -19,8 +19,8 @@ import android.widget.ImageView;
 
 
 public abstract class StickerView extends FrameLayout {
+    public static final String TAG = "com.android.yoly";
 
-    public static final String TAG = "com.yoly";
     private BorderView iv_border;
     private ImageView iv_scale;
     private ImageView iv_delete;
@@ -40,6 +40,7 @@ public abstract class StickerView extends FrameLayout {
     private final static int BUTTON_SIZE_DP = 30;
     private final static int SELF_SIZE_DP = 100;
 
+    private OnDeleteListener onDeleteListener;
 
     public StickerView(Context context) {
         super(context);
@@ -128,6 +129,10 @@ public abstract class StickerView extends FrameLayout {
         this.iv_delete.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (onDeleteListener != null) {
+                    onDeleteListener.onDelete();
+                }
+
                 if (StickerView.this.getParent() != null) {
                     ViewGroup myCanvas = ((ViewGroup) StickerView.this.getParent());
                     myCanvas.removeView(StickerView.this);
@@ -384,10 +389,28 @@ public abstract class StickerView extends FrameLayout {
             iv_flip.setVisibility(View.VISIBLE);
             iv_scale.setVisibility(View.VISIBLE);
         }
+    }
 
+    public void delete() {
+        if (this.getParent() != null) {
+            ViewGroup myCanvas = ((ViewGroup) this.getParent());
+            myCanvas.removeView(this);
+        }
     }
 
     public OnTouchListener getTouchListener() {
         return mTouchListener;
+    }
+
+    public OnDeleteListener getOnDeleteListener() {
+        return onDeleteListener;
+    }
+
+    public void setOnDeleteListener(OnDeleteListener onDeleteListener) {
+        this.onDeleteListener = onDeleteListener;
+    }
+
+    public interface OnDeleteListener {
+        void onDelete();
     }
 }

@@ -1,4 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/root_view"
@@ -36,28 +36,28 @@
                 android:layout_height="36dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
-                android:layout_toLeftOf="@+id/action2"
-                android:layout_toStartOf="@+id/action2"
+                android:layout_toLeftOf="@+id/action_edit_delete"
+                android:layout_toStartOf="@+id/action_edit_delete"
                 android:background="@android:color/transparent"
                 android:padding="4dp"
                 android:scaleType="fitXY"
                 app:srcCompat="@drawable/ic_done_primary_24dp" />
 
             <ImageButton
-                android:id="@+id/action2"
+                android:id="@+id/action_edit_delete"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
-                android:layout_toLeftOf="@+id/action3"
-                android:layout_toStartOf="@+id/action3"
+                android:layout_toLeftOf="@+id/action_edit_forward"
+                android:layout_toStartOf="@+id/action_edit_forward"
                 android:background="@android:color/transparent"
                 android:padding="4dp"
                 android:scaleType="fitXY"
                 app:srcCompat="@drawable/ic_close_primary_24dp" />
 
             <ImageButton
-                android:id="@+id/action3"
+                android:id="@+id/action_edit_forward"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_alignParentEnd="true"
@@ -66,6 +66,24 @@
                 android:padding="4dp"
                 android:scaleType="fitXY"
                 app:srcCompat="@drawable/ic_arrow_forward_primary_24dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_header_edit_mode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:clickable="true"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/ib_back"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@android:color/transparent"
+                android:padding="8dp"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/ic_arrow_back_primary_dark_24dp" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -83,6 +101,7 @@
             android:layout_margin="16dp"
             android:background="@drawable/new_look_close_btn_bg"
             android:padding="4dp"
+            android:visibility="gone"
             app:srcCompat="@drawable/ic_close_white_24dp" />
 
         <RelativeLayout
@@ -98,5 +117,86 @@
                 android:background="@android:color/transparent"
                 app:srcCompat="@drawable/ic_keyboard_arrow_up_primary_24dp" />
         </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_edit_mode_controls"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp">
+
+            <ImageButton
+                android:id="@+id/ib_edit_mode_done"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@android:color/transparent"
+                android:padding="4dp"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/ic_done_primary_24dp" />
+
+            <ImageButton
+                android:id="@+id/ib_edit_mode_delete"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_toEndOf="@+id/ib_edit_mode_done"
+                android:layout_toRightOf="@+id/ib_edit_mode_done"
+                android:background="@android:color/transparent"
+                android:padding="4dp"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/ic_close_primary_24dp" />
+
+            <ImageButton
+                android:id="@+id/ib_edit_mode_settings"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:background="@android:color/transparent"
+                android:padding="4dp"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/ic_settings_brightness_primary_24dp" />
+
+            <RelativeLayout
+                android:id="@+id/page_indicator_container"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:background="@color/white"
+                android:minWidth="36dp"
+                android:visibility="gone">
+
+                <me.relex.circleindicator.CircleIndicator
+                    android:id="@+id/page_indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:layout_margin="8dp"
+                    app:ci_drawable="@drawable/ic_circle_primary_24dp"
+                    app:ci_drawable_unselected="@drawable/ic_radio_button_unchecked_primary_24dp" />
+            </RelativeLayout>
+        </RelativeLayout>
     </RelativeLayout>
-</RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/bottom_sheet_edit_mode_settings"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        app:behavior_hideable="true"
+        app:layout_behavior="@string/bottom_sheet_behavior">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="36dp"
+            android:background="@android:color/white">
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
+    </FrameLayout>
+</android.support.design.widget.CoordinatorLayout>

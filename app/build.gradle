@@ -42,7 +42,7 @@ repositories {
 }
 
 ext {
-    supportLibraryVersion = '25.1.0'
+    supportLibraryVersion = '25.0.1'
     playServicesVersion = '10.0.1'
 }
 
@@ -100,4 +100,7 @@ dependencies {
     // Social
     compile 'com.vk:androidsdk:1.6.5'
     compile project(':StickerView')
+
+    compile 'me.relex:circleindicator:1.2.2@aar'
+    compile 'com.github.Triggertrap:SeekArc:v1.1'
 }

@@ -1,29 +1,42 @@
 package yoly.com.android.yoly.ui.fragment;
 
+import android.graphics.ColorMatrix;
+import android.graphics.ColorMatrixColorFilter;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomSheetBehavior;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.PopupMenuCompat;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.view.menu.MenuPopupHelper;
-import android.support.v7.widget.PopupMenu;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 
 import com.knef.stickerview.StickerImageView;
+import com.knef.stickerview.StickerView;
+
+import java.util.LinkedList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import me.relex.circleindicator.CircleIndicator;
 import yoly.com.android.yoly.R;
+import yoly.com.android.yoly.ui.fragment.pager.NewLookEditModeSettings1;
+import yoly.com.android.yoly.ui.fragment.pager.NewLookEditModeSettings2;
 import yoly.com.android.yoly.ui.view.NewLookView;
 
 public class NewLookWorkspaceFragment extends Fragment {
@@ -34,15 +47,52 @@ public class NewLookWorkspaceFragment extends Fragment {
     private Drawable photo;
     private NewLookView view;
 
+    // Views
     @BindView(R.id.laybg)
     RelativeLayout canvas;
 
     @BindView(R.id.hamburger)
     ImageButton hamburger;
 
+    // View mode controls
+    @BindView(R.id.iv_dismiss)
+    ImageView IVDismiss;
 
-    @BindView(R.id.action_edit_done)
-    ImageButton IBEditDone;
+    // Edit mode controls
+    @BindView(R.id.rl_header_edit_mode)
+    RelativeLayout RLEditModeHeader;
+
+    @BindView(R.id.ib_back)
+    ImageButton IBBack;
+
+    @BindView(R.id.rl_edit_mode_controls)
+    RelativeLayout RLEditModePanel;
+
+    @BindView(R.id.ib_edit_mode_done)
+    ImageButton IBEditModeDone;
+
+    @BindView(R.id.ib_edit_mode_delete)
+    ImageButton IBEditModeDelete;
+
+    @BindView(R.id.ib_edit_mode_settings)
+    ImageButton IBEditModeSettings;
+
+    @BindView(R.id.view_pager)
+    ViewPager viewPagerEditMode;
+
+    @BindView(R.id.page_indicator_container)
+    RelativeLayout RLPageIndicatorWrapper;
+
+    @BindView(R.id.page_indicator)
+    CircleIndicator pagerIndicatorEditMode;
+
+    // Bottom sheets
+    @BindView(R.id.bottom_sheet_edit_mode_settings)
+    FrameLayout bottomSheetEditModeSettings;
+
+    private BottomSheetBehavior bottomSheetBehaviorEditModeSettings;
+    private NewLookEditModeSettings1 settingsEditMode1;
+    private NewLookEditModeSettings2 settingsEditMode2;
 
     @Nullable
     @Override
@@ -52,24 +102,83 @@ public class NewLookWorkspaceFragment extends Fragment {
 
         view.getActivity().setHamburger(hamburger);
 
-        IBEditDone.setOnClickListener(new View.OnClickListener() {
+        settingsEditMode1 = new NewLookEditModeSettings1();
+        settingsEditMode2 = new NewLookEditModeSettings2();
+
+        EditModeSettingAdapter pageAdapter = new EditModeSettingAdapter(getFragmentManager());
+        pageAdapter.addPage(settingsEditMode1);
+        pageAdapter.addPage(settingsEditMode2);
+        viewPagerEditMode.setAdapter(pageAdapter);
+        pagerIndicatorEditMode.setViewPager(viewPagerEditMode);
+
+        bottomSheetBehaviorEditModeSettings = BottomSheetBehavior.from(bottomSheetEditModeSettings);
+        bottomSheetBehaviorEditModeSettings.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+            @Override
+            public void onStateChanged(@NonNull View bottomSheet, int newState) {
+                if (newState == BottomSheetBehavior.STATE_HIDDEN) {
+                    RLPageIndicatorWrapper.setVisibility(View.GONE);
+                } else if (newState == BottomSheetBehavior.STATE_EXPANDED) {
+                    RLPageIndicatorWrapper.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onSlide(@NonNull View bottomSheet, float slideOffset) {
+
+            }
+        });
+        bottomSheetBehaviorEditModeSettings.setState(BottomSheetBehavior.STATE_HIDDEN);
+
+        IBEditModeDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActiveItem().setInEditMode(false);
+                if (getActiveItem() != null)
+                    getActiveItem().setInEditMode(false);
                 setInEditMode(false);
             }
         });
 
+        IBEditModeDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (getActiveItem() != null)
+                    getActiveItem().delete();
+                setInEditMode(false);
+            }
+        });
+
+        IBEditModeSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bottomSheetBehaviorEditModeSettings.setState(BottomSheetBehavior.STATE_EXPANDED);
+            }
+        });
+
+        addDemoItem();
+        addDemoItem();
+        addDemoItem();
+        setInEditMode(false);
+
+        return rootView;
+    }
+
+    private void addDemoItem() {
         canvas.setBackground(photo);
         final StickerImageView sticker = new StickerImageView(getContext());
         sticker.setImageResource(R.drawable.jeans);
+        sticker.setOnDeleteListener(new StickerView.OnDeleteListener() {
+            @Override
+            public void onDelete() {
+                setInEditMode(false);
+            }
+        });
         sticker.setNormalModeTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN && !getInEditMode()) {
                     MenuBuilder menuBuilder = new MenuBuilder(getContext());
                     MenuInflater menuInflater = new MenuInflater(getContext());
-                    MenuPopupHelper menuPopupHelper = new MenuPopupHelper(getContext(), menuBuilder);
+                    final MenuPopupHelper menuPopupHelper = new MenuPopupHelper(getContext(), menuBuilder);
 
                     menuInflater.inflate(R.menu.new_look_workspace_context, menuBuilder);
                     menuPopupHelper.setAnchorView(sticker);
@@ -81,36 +190,32 @@ public class NewLookWorkspaceFragment extends Fragment {
                         public boolean onMenuItemSelected(MenuBuilder menu, MenuItem item) {
                             switch (item.getItemId()) {
                                 case R.id.action_edit:
+                                    ((ImageView) sticker.getMainView()).setAlpha(1F);
                                     setActiveItem(sticker);
                                     setInEditMode(true);
                                     sticker.setInEditMode(true);
                                     return true;
+
+                                case R.id.action_delete:
+                                    sticker.delete();
+                                    return true;
                             }
+
                             return false;
                         }
 
                         @Override
                         public void onMenuModeChange(MenuBuilder menu) {
-
                         }
                     });
-
-                 /*   PopupMenu popupMenu = new PopupMenu(getContext(), sticker);
-                    popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    menuPopupHelper.setOnDismissListener(new PopupWindow.OnDismissListener() {
                         @Override
-                        public boolean onMenuItemClick(MenuItem item) {
-                            switch (item.getItemId()) {
-                                case R.id.action_edit:
-                                    setActiveItem(sticker);
-                                    setInEditMode(true);
-                                    sticker.setInEditMode(true);
-                                    return true;
-                            }
-                            return false;
+                        public void onDismiss() {
+                            ((ImageView) sticker.getMainView()).setAlpha(1F);
                         }
                     });
-                    popupMenu.inflate(R.menu.new_look_workspace_context);
-                    popupMenu.show();*/
+
+                    ((ImageView) sticker.getMainView()).setAlpha(0.5F);
 
                     return true;
                 }
@@ -118,14 +223,11 @@ public class NewLookWorkspaceFragment extends Fragment {
                 return false;
             }
         });
+        sticker.setInEditMode(false);
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(500, 500);
         layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
 
         canvas.addView(sticker, layoutParams);
-        setInEditMode(true);
-        setActiveItem(sticker);
-
-        return rootView;
     }
 
     @OnClick(R.id.iv_dismiss)
@@ -149,6 +251,9 @@ public class NewLookWorkspaceFragment extends Fragment {
 
     public void setActiveItem(StickerImageView activeItem) {
         this.activeItem = activeItem;
+
+        settingsEditMode1.setActiveItem(activeItem);
+        settingsEditMode2.setActiveItem(activeItem);
     }
 
     public Boolean getInEditMode() {
@@ -159,9 +264,45 @@ public class NewLookWorkspaceFragment extends Fragment {
         this.inEditMode = inEditMode;
 
         if (inEditMode) {
-            IBEditDone.setVisibility(View.VISIBLE);
+            setEditModeControlsVisible(true);
         } else {
-            IBEditDone.setVisibility(View.GONE);
+            setEditModeControlsVisible(false);
+        }
+    }
+
+    private void setEditModeControlsVisible(Boolean visible) {
+        if (visible) {
+            RLEditModePanel.setVisibility(View.VISIBLE);
+            RLEditModeHeader.setVisibility(View.VISIBLE);
+            IVDismiss.setVisibility(View.GONE);
+        } else {
+            RLEditModePanel.setVisibility(View.GONE);
+            RLEditModeHeader.setVisibility(View.GONE);
+            bottomSheetBehaviorEditModeSettings.setState(BottomSheetBehavior.STATE_HIDDEN);
+            IVDismiss.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private class EditModeSettingAdapter extends FragmentPagerAdapter {
+        private LinkedList<Fragment> fragments;
+
+        public EditModeSettingAdapter(FragmentManager fm) {
+            super(fm);
+            fragments = new LinkedList<>();
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return fragments.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return fragments.size();
+        }
+
+        public void addPage(Fragment fragment) {
+            fragments.add(fragment);
         }
     }
 }
