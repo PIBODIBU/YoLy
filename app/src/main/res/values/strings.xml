@@ -52,4 +52,6 @@
     <string name="btn_buy_pro">Купить PRO</string>
     <string name="popular_look_btn_buy">Купить</string>
     <string name="new_look_greets">Загрузите свою фотографию, на которую Вы будете примерять новый LOOK. Фотография должна уместиться в область приведенную ниже</string>
+    <string name="tv_brand_list_title">Бренды</string>
+    <string name="brand_choose_hint">Выберите бренд</string>
 </resources>

@@ -1,7 +1,6 @@
 package yoly.com.android.yoly.ui.fragment;
 
-import android.graphics.ColorMatrix;
-import android.graphics.ColorMatrixColorFilter;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -35,6 +34,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import me.relex.circleindicator.CircleIndicator;
 import yoly.com.android.yoly.R;
+import yoly.com.android.yoly.ui.activity.BrandChooseActivity;
 import yoly.com.android.yoly.ui.fragment.pager.NewLookEditModeSettings1;
 import yoly.com.android.yoly.ui.fragment.pager.NewLookEditModeSettings2;
 import yoly.com.android.yoly.ui.view.NewLookView;
@@ -85,6 +85,10 @@ public class NewLookWorkspaceFragment extends Fragment {
 
     @BindView(R.id.page_indicator)
     CircleIndicator pagerIndicatorEditMode;
+
+    // View mode controls
+    @BindView(R.id.rl_controls)
+    RelativeLayout RLPanelChooseBrand;
 
     // Bottom sheets
     @BindView(R.id.bottom_sheet_edit_mode_settings)
@@ -281,6 +285,11 @@ public class NewLookWorkspaceFragment extends Fragment {
             bottomSheetBehaviorEditModeSettings.setState(BottomSheetBehavior.STATE_HIDDEN);
             IVDismiss.setVisibility(View.VISIBLE);
         }
+    }
+
+    @OnClick(R.id.rl_controls)
+    public void openCategoryChoosePanel() {
+        startActivity(new Intent(getContext(), BrandChooseActivity.class));
     }
 
     private class EditModeSettingAdapter extends FragmentPagerAdapter {

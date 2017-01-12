@@ -29,6 +29,9 @@ public class NewLookEditModeSettings1 extends Fragment {
 
     private StickerImageView activeItem;
 
+    private int brightness = 0;
+    private int contrast = 1;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -83,12 +86,14 @@ public class NewLookEditModeSettings1 extends Fragment {
         return this;
     }
 
-    public static ColorMatrixColorFilter brightImageView(int fb) {
+    public ColorMatrixColorFilter brightImageView(int brightness) {
+        this.brightness = brightness;
+
         ColorMatrix cmB = new ColorMatrix();
         cmB.set(new float[]{
-                1, 0, 0, 0, fb,
-                0, 1, 0, 0, fb,
-                0, 0, 1, 0, fb,
+                this.contrast, 0, 0, 0, brightness,
+                0, this.contrast, 0, 0, brightness,
+                0, 0, this.contrast, 0, brightness,
                 0, 0, 0, 1, 0});
 
         ColorMatrix colorMatrix = new ColorMatrix();
@@ -96,12 +101,14 @@ public class NewLookEditModeSettings1 extends Fragment {
         return new ColorMatrixColorFilter(colorMatrix);
     }
 
-    public static ColorMatrixColorFilter contrastImageView(int contrast) {
+    public ColorMatrixColorFilter contrastImageView(int contrast) {
+        this.contrast = contrast;
+
         ColorMatrix cm = new ColorMatrix(new float[]
                 {
-                        contrast, 0, 0, 0, 0,
-                        0, contrast, 0, 0, 0,
-                        0, 0, contrast, 0, 0,
+                        contrast, 0, 0, 0, this.brightness,
+                        0, contrast, 0, 0, this.brightness,
+                        0, 0, contrast, 0, this.brightness,
                         0, 0, 0, 1, 0
                 });
 
